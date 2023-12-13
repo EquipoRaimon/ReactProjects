@@ -1,8 +1,9 @@
-import Button from 'react-bootstrap/Button';
 import '../boton.css';
+   
 
-export default function Square(){
+
+export default function Square({onClick}){
     return (
-        <Button className="boton btn btn-light btn-outline-dark rounded-0"></Button>
+        <button className="boton btn btn-light btn-outline-dark rounded-0" onClick={onClick}>X</button>
     )
 }
