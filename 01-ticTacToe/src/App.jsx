@@ -1,20 +1,61 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Board from './components/Board'
-import Square from './components/Square'
-import BotonR from './components/GameStatus'
+import {BotonR, Turno} from './components/GameStatus'
+import { calcularGanador, isRelleno } from './utils/gameLogic';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [casillas,setValorCasilla] = useState(Array(9).fill(null));
 
+  const [jugadorActual, cambiarJugador] = useState("X");
+
+  function handleClick(index){
+
+    if(calcularGanador(casillas) || casillas[index]){
+      return;
+    }
+
+      actualizarEstado(index);
+      cambiarXO();
+      
+  }
+
+  function handleReinicio(){
+    const asignarValores = casillas.map(() => {
+      return null;
+    });
+    cambiarJugador("X");
+    setValorCasilla(asignarValores)
+  }
+
+  function actualizarEstado(index){
+      const asignarValor = casillas.map((c, i) => {
+        if (i === index) {
+          return jugadorActual;
+        } else {
+          return c;
+        }
+      });
+    setValorCasilla(n => asignarValor);
+
+  }
+
+  function cambiarXO(){
+    if(jugadorActual =="X"){
+      cambiarJugador("O")
+    }else{
+      cambiarJugador("X")
+    }
+  }
+
+  const ganador = calcularGanador(casillas);
+  const relleno = isRelleno(casillas);
   return (
     <>
-
-      <Board></Board>
+      <Turno ganador={ganador} jugadorActual={jugadorActual} relleno={relleno}></Turno>
+      <Board casillas={casillas} handleClick={handleClick}></Board>
       
-      <BotonR></BotonR>
+      <BotonR handleReinicio={handleReinicio}></BotonR>
 
     </>
     )
