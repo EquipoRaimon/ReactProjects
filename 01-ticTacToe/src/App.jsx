@@ -1,18 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Board from './components/Board'
-import Square from './components/Square'
 import BotonR from './components/GameStatus'
+import { calcularGanador } from './utils/gameLogic';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [casillas,setValorCasilla] = useState(Array(9).fill(null));
+
+  const [jugadorActual, cambiarJugador] = useState("X");
+
+  function handleClick(index){
+    if(casillas[index] == null){
+      const asignarValor = casillas.map((c, i) => {
+        if (i === index) {
+          return jugadorActual;
+        } else {
+          return c;
+        }
+      });
+      setValorCasilla(asignarValor);
+      if(jugadorActual =="X"){
+        cambiarJugador("O")
+      }else{
+        cambiarJugador("X")
+      }
+    }
+    if(calcularGanador(casillas)){
+      alert("Has ganado jugador"+jugadorActual)
+    }
+    
+      
+  }
 
   return (
     <>
 
-      <Board></Board>
+      <Board casillas={casillas} handleClick={handleClick}></Board>
       
       <BotonR></BotonR>
 
