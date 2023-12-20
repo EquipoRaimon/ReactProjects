@@ -1,8 +1,4 @@
-/*
-export function cambiarJugador(jugadorActual){
-    jugadorActual = jugadorActual == "X" ? "O" : "X";
-}
-*/
+
 export function calcularGanador(casillas) {
     const lineasGanadoras = [
       [0, 1, 2],
@@ -16,10 +12,19 @@ export function calcularGanador(casillas) {
     ];
     for(let i = 0;i<lineasGanadoras.length;i++){
         const [a, b, c] = lineasGanadoras[i];
-        if (casillas[a] && casillas[a] === casillas[b] && casillas[a] === casillas[c]) {
-            return true;
+        if (casillas[a] && casillas[a] == casillas[b] && casillas[a] == casillas[c]) {
+            return casillas[a];
           }
     }
-    return false;
+    return null;
 
+}
+
+export function isRelleno(casillas){
+    for (let i = 0; i < casillas.length; i++) {
+      if(casillas[i]==null){
+        return false;
+      }
+    }
+    return true;
 }
