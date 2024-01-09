@@ -20,14 +20,6 @@ function App() {
       
   }
 
-  function handleReinicio(){
-    const asignarValores = casillas.map(() => {
-      return null;
-    });
-    cambiarJugador("X");
-    setValorCasilla(asignarValores)
-  }
-
   function actualizarEstado(index){
       const asignarValor = casillas.map((c, i) => {
         if (i === index) {
@@ -55,7 +47,7 @@ function App() {
       <Turno ganador={ganador} jugadorActual={jugadorActual} relleno={relleno}></Turno>
       <Board casillas={casillas} handleClick={handleClick}></Board>
       
-      <BotonR handleReinicio={handleReinicio}></BotonR>
+      <BotonR setValorCasilla={setValorCasilla} cambiarJugador={cambiarJugador}></BotonR>
 
     </>
     )
