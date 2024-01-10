@@ -21,14 +21,14 @@ function App() {
   }
 
   function actualizarEstado(index){
-      const asignarValor = casillas.map((c, i) => {
-        if (i === index) {
+      const asignarValor = casillas.map((casilla, indiceCasilla) => {
+        if (indiceCasilla === index) {
           return jugadorActual;
         } else {
-          return c;
+          return casilla;
         }
       });
-    setValorCasilla(n => asignarValor);
+    setValorCasilla(asignarValor);
 
   }
 
@@ -42,9 +42,11 @@ function App() {
 
   const ganador = calcularGanador(casillas);
   const relleno = isRelleno(casillas);
+  
   return (
     <>
       <Turno ganador={ganador} jugadorActual={jugadorActual} relleno={relleno}></Turno>
+      
       <Board casillas={casillas} handleClick={handleClick}></Board>
       
       <BotonR setValorCasilla={setValorCasilla} cambiarJugador={cambiarJugador}></BotonR>

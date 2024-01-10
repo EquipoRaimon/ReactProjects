@@ -1,8 +1,11 @@
-# React + Vite
+# 01-TICTACTOE
+## Proyecto del juego tres en raya
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+Este es mi proyecto referente 
+Hay que poner todos los componentes (App, Board, etc) y poner para que sirven.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+También poner como usar npm install y npm run dev
+
+---
