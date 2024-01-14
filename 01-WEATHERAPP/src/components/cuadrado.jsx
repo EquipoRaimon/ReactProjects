@@ -1,7 +1,9 @@
 import imagenes from "../assets/imagenes";
 
-export default function Cuadrado({weather}) {
-    return (
+export default function Cuadrado({ weather }) {
+  return (
+    <div>
+      {typeof weather.city !== "undefined" ? (
         <div className="cuadroGrande card bg-white bg-opacity-50 text-black">
           <div className="ciudad">
             {typeof weather.city !== "undefined" ? (
@@ -18,7 +20,61 @@ export default function Cuadrado({weather}) {
             )}
           </div>
           <div>
-            <img src={imagenes.img1} className="card-img" id="sol" alt=""></img>
+            {typeof weather.list != "undefined" ?
+              <div>
+                {weather.list[0].weather[0].main == "Snow" ?
+                  <img id="sol" src={imagenes.img3} className="card-img-top" />
+                  :
+                  ' '
+                }
+              </div>
+              :
+              ' '
+            }
+            {typeof weather.list != "undefined" ?
+              <div>
+                {weather.list[0].weather[0].main == "Rain" ?
+                  <img id="sol" src={imagenes.img2} className="card-img-top" />
+                  :
+                  ' '
+                }
+              </div>
+              :
+              ' '
+            }
+            {typeof weather.list != "undefined" ?
+              <div>
+                {weather.list[0].weather[0].main == "Clouds" ?
+                  <img id="sol" src={imagenes.img5} className="card-img-top" />
+                  :
+                  ' '
+                }
+              </div>
+              :
+              ' '
+            }
+            {typeof weather.list != "undefined" ?
+              <div>
+                {weather.list[0].weather[0].main == "Clear" ?
+                  <img id="sol" src={imagenes.img1} className="card-img-top" />
+                  :
+                  ' '
+                }
+              </div>
+              :
+              ' '
+            }
+            {typeof weather.list != "undefined" ?
+              <div>
+                {weather.list[0].weather[0].main == "Storm" ?
+                  <img id="sol" src={imagenes.img4} className="card-img-top" />
+                  :
+                  ' '
+                }
+              </div>
+              :
+              ' '
+            }
           </div>
           <div className="TIEMPO">
             {typeof weather.list != "undefined" ? (
@@ -50,5 +106,9 @@ export default function Cuadrado({weather}) {
             )}
           </div>
         </div>
-    )
+      ) : (
+        ""
+      )}
+    </div>
+  )
 }
