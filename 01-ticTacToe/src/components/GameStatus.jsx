@@ -16,10 +16,10 @@ export function Turno({ganador, jugadorActual, relleno}){
         return(
             <h1 className="bg-light-subtle mb-2 rounded-1 ">Has ganado, '{ganador}'. ¡Felicidades!</h1>
         )
-        }else if(relleno){
-            return(
-                <h1 className="bg-light-subtle mb-2 rounded-1 ">Hay un empate</h1>
-            )
+    }else if(relleno){
+        return(
+            <h1 className="bg-light-subtle mb-2 rounded-1 ">Hay un empate</h1>
+        )
     }else{
         return(
             <h1 className="bg-light-subtle mb-2 rounded-1 ">Es el turno del jugador '{jugadorActual}'</h1>
