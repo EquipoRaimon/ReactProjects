@@ -1,3 +1,26 @@
 body{
     background-color: aquamarine;
 }
+
+main{
+    width: 80vw;
+}
+
+nav{
+    height: 10vh;
+    font-size: 1.5em;
+}
+.logo{
+    width: 4vw;
+}
+.carga{
+    width: 30vw;
+}
+
+.pantalla-carga{
+    width: 50vw;
+}
+
+.texto-carga{
+    margin: auto;
+}
