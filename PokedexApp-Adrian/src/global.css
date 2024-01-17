@@ -8,7 +8,7 @@ main{
 
 nav{
     height: 10vh;
-    font-size: 1.5em;
+    font-size: 2vw;
 }
 .logo{
     width: 4vw;
@@ -23,4 +23,7 @@ nav{
 
 .texto-carga{
     margin: auto;
+}
+.pokeimg{
+    width: 20vw;
 }

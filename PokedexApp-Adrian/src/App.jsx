@@ -8,7 +8,7 @@ import Loading from './components/Loading';
 function App() {
   const [listaPokemon, setListaPokemon] = useState([]);
   const [generacion, setGeneracion] = useState(2);
-  const [pokemon, setPokemon] = useState(null);
+  const [pokemon, setPokemon] = useState();
 
   useEffect(() => {
     const getListaPokemon = async () => {
@@ -38,18 +38,16 @@ function App() {
     getListaPokemon()
   }, [generacion])
 
-  function handleClick(){
-
-  }
-
   return (
     <>
 
       <NavBar setGeneracion={setGeneracion}></NavBar>
       <Loading listaPokemon={listaPokemon}></Loading>
       <main className='mx-auto'>
-        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} handleClick={handleClick}/>
 
+        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon}/>
+        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon}/>
+        
       </main>
       
 
