@@ -5,5 +5,4 @@ export default function Form({ buscarPressed, setBuscar }) {
             <input type="submit" value="BUSCAR" onClick={ buscarPressed()} className="ms-1 btn btn-dark "/>
         </form>
     )
-
 }
