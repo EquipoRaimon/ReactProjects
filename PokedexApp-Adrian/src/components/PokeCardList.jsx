@@ -1,6 +1,6 @@
 import PokeCardSmall from './PokeCardSmall'
 
-export default function PokeCardList({listaPokemon, pokemon, setPokemon}){
+export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny}){
 
   if(pokemon){
     return <></>
@@ -17,7 +17,7 @@ export default function PokeCardList({listaPokemon, pokemon, setPokemon}){
           }
           return(
             
-            <PokeCardSmall pokemon={poke} key={poke.id} setPokemon={setPokemon} PokemonSeleccionado={pokemon} />
+            <PokeCardSmall pokemon={poke} key={poke.id} setPokemon={setPokemon} PokemonSeleccionado={pokemon} shiny={shiny}/>
 
           )
         })

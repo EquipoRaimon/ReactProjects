@@ -1,4 +1,6 @@
-export default function PokeCardSmall({pokemon, setPokemon}){
+import PokeImage from './PokeImage'
+
+export default function PokeCardSmall({pokemon, setPokemon, shiny}){
 
     function handleOnClick(){
         setPokemon(pokemon)
@@ -8,8 +10,10 @@ export default function PokeCardSmall({pokemon, setPokemon}){
         <>
 
             <div className="card col-4 " onClick={handleOnClick}>
-                <div className="card-img-top ">
-                    <img src={pokemon.sprites.other["official-artwork"].front_default} className="pokeimg"></img>
+                <div className=" mx-auto">
+                    
+                    <PokeImage pokemon={pokemon} shiny={shiny}/>
+
                 </div>
                 <div className="card-body mx-auto">
                     <h5 className="card-title">{"#"+pokemon.id}</h5>

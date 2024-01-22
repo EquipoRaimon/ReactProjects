@@ -1,19 +1,19 @@
 import { useState } from 'react'
 
 
-export default function PokeCardSmall({setGeneracion, setPokemon}){
+export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny}){
 
     function cambiarGeneracion(e){
         setGeneracion(e.target.value)
         setPokemon()
       }
     async function handleSubmit(e){
-        e.preventDefault
+        e.preventDefault()
         const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+buscarPokemon)
         if (respuesta.ok) {
 
             const respuestaJson = await respuesta.json()
-            const pokemon = await Promise.resolve(respuestaJson).then(value => setPokemon(value))
+            await Promise.resolve(respuestaJson).then(value => setPokemon(value))
 
         } else {
             console.error('No existe ese pokemon');
@@ -21,11 +21,23 @@ export default function PokeCardSmall({setGeneracion, setPokemon}){
         }
     }
 
+
+    function cambiarShiny(){
+        if (!shiny) {
+            setShiny(1)
+
+        } else {
+            setShiny(0)
+
+        }
+    }
+
+
     const [buscarPokemon, setBuscarPokemon] = useState();
 
     return(
         <>
-            <nav className="navbar navbar-expand-lg bg-light pb-5  pb-lg-2 pb-xxl-1 ">
+            <nav className="navbar navbar-expand-lg bg-light ">
                 <div className="container-fluid ">
                     <div className="navbar-brand">
                         <img src='../src/assets/pikachu.png' className="logo"/>
@@ -61,6 +73,11 @@ export default function PokeCardSmall({setGeneracion, setPokemon}){
                                 <button className="nav-link" value="15" onClick={cambiarGeneracion}>Alola</button>
                             </li>
                         </div>
+
+                        <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" onChange={cambiarShiny}/>
+                        <label className="btn btn-outline-primary me-2" htmlFor="btn-check">Shiny</label>
+
+
                         <form className="d-flex" role="search" onSubmit={handleSubmit}>
                             <input className="form-control me-2" type="search" placeholder="Buscar Pokemon" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value)}/>
                             <button className="btn btn-outline-success" type="submit">Buscar</button>

@@ -9,6 +9,7 @@ function App() {
   const [listaPokemon, setListaPokemon] = useState([]);
   const [generacion, setGeneracion] = useState(2);
   const [pokemon, setPokemon] = useState();
+  const [shiny, setShiny] = useState(0);
 
   useEffect(() => {
     const getListaPokemon = async () => {
@@ -41,13 +42,13 @@ function App() {
   return (
     <>
       <header>
-        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon}></NavBar>
+        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny}></NavBar>
       </header>
       
       <main className='mx-auto'>
         <Loading listaPokemon={listaPokemon}></Loading>
-        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon}/>
-        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon}/>
+        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon}/>
+        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon} shiny={shiny}/>
         
       </main>
     

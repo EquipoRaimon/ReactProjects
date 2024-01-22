@@ -1,4 +1,6 @@
-export default function PokeCardSmall({pokemon, setPokemon}){
+import PokeImage from './PokeImage'
+
+export default function PokeCardSmall({pokemon, setPokemon, shiny}){
 
     function handleClick(){
         setPokemon()
@@ -7,17 +9,14 @@ export default function PokeCardSmall({pokemon, setPokemon}){
     if(!pokemon){
         return <></>
     }
-/*
-Da error al intentar renderizar PokeCardBig, creo que es debido a que al re-renderizar
-cambia la variable y renderiza este objeto a la vez (no teniendo este objeto nada en pokemon, es decir el valor que tenía pre renderizado)
-Creo que para arreglar esto hay que usar UseEffect para renderizar los componentes dependiendo del valor de ese estado (pokemon)
-O preguntar
-*/
+
     return(
         <>
-            <div className="card col-4 " id="PokeCardBig">
-                <div className="card-img-top ">
-                    <img src={pokemon.sprites.other["official-artwork"].front_default} className="pokeimg"></img>
+            <div className="card w-50 mx-auto" id="PokeCardBig">
+                <div className="mx-auto">
+                    
+                    <PokeImage pokemon={pokemon} shiny={shiny}/>
+                    
                 </div>
                 <div className="card-body mx-auto">
                     <h5 className="card-title">{"#"+pokemon.id}</h5>
