@@ -15,15 +15,19 @@ O preguntar
 */
     return(
         <>
-            <div className="card col-4 ">
+            <div className="card col-4 " id="PokeCardBig">
                 <div className="card-img-top ">
                     <img src={pokemon.sprites.other["official-artwork"].front_default} className="pokeimg"></img>
                 </div>
                 <div className="card-body mx-auto">
                     <h5 className="card-title">{"#"+pokemon.id}</h5>
                     <p className="card-text">{pokemon.name}</p>
-                    <p className="card-text">{pokemon.types.type[0].name}</p>
-                    <button handleClick={handleClick}>Volver</button>
+                    {
+                        pokemon.types.map((poke)=>{
+                            <p>{poke.type.name}</p>
+                        })
+                    }
+                    <button onClick={handleClick}>Volver</button>
                 </div>
             </div>
         </>
