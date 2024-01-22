@@ -40,17 +40,17 @@ function App() {
 
   return (
     <>
-
-      <NavBar setGeneracion={setGeneracion}></NavBar>
-      <Loading listaPokemon={listaPokemon}></Loading>
+      <header>
+        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon}></NavBar>
+      </header>
+      
       <main className='mx-auto'>
-
+        <Loading listaPokemon={listaPokemon}></Loading>
         <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon}/>
         <PokeCardBig pokemon={pokemon} setPokemon={setPokemon}/>
         
       </main>
-      
-
+    
     </>
   )
 }
