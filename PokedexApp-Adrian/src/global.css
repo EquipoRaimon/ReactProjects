@@ -5,10 +5,10 @@ body{
 
 main{
     width: 80vw;
+    margin: 0 auto;
 }
 
 nav{
-    height: 10vh;
     font-size: 2vw;
 }
 .logo{
@@ -29,10 +29,14 @@ nav{
     width: 25vw;
 }
 
-.pokeCardSmall{
-
+.boton-volver{
+    width: 4vw;
 }
 
-.pokeCardBig{
-    
+.boton-volver:hover{
+    cursor: pointer;
+}
+
+.pokeCardSmall:hover{
+    cursor: pointer;
 }

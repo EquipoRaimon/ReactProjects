@@ -1,4 +1,9 @@
-export default function PokeCardSmall({pokemon, setPokemon}){
+import { useState } from 'react'
+import PokeImage from './PokeImage'
+
+export default function PokeCardSmall({pokemon, setPokemon, shiny}){
+
+    const [vista, setVista] = useState(1)
 
     function handleClick(){
         setPokemon()
@@ -7,27 +12,30 @@ export default function PokeCardSmall({pokemon, setPokemon}){
     if(!pokemon){
         return <></>
     }
-/*
-Da error al intentar renderizar PokeCardBig, creo que es debido a que al re-renderizar
-cambia la variable y renderiza este objeto a la vez (no teniendo este objeto nada en pokemon, es decir el valor que tenía pre renderizado)
-Creo que para arreglar esto hay que usar UseEffect para renderizar los componentes dependiendo del valor de ese estado (pokemon)
-O preguntar
-*/
+
     return(
         <>
-            <div className="card col-4 " id="PokeCardBig">
-                <div className="card-img-top ">
-                    <img src={pokemon.sprites.other["official-artwork"].front_default} className="pokeimg"></img>
+            <div className="card w-50 mx-auto mt-5">
+
+                <div className='boton-volver ms-2 mt-2'>
+                    <img src='../src/assets/atras.svg'  onClick={handleClick}/>
+
                 </div>
-                <div className="card-body mx-auto">
-                    <h5 className="card-title">{"#"+pokemon.id}</h5>
-                    <p className="card-text">{pokemon.name}</p>
+
+                <div className="mx-auto">
+                    
+                    <PokeImage pokemon={pokemon} shiny={shiny}/>
+                    
+                </div>
+                <div className="mx-auto">
+                    <h5 className="">{"#"+pokemon.id}</h5>
+                    <p className="">{pokemon.name}</p>
                     {
                         pokemon.types.map((poke)=>{
                             <p>{poke.type.name}</p>
                         })
                     }
-                    <button onClick={handleClick}>Volver</button>
+                    
                 </div>
             </div>
         </>
