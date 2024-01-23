@@ -4,8 +4,8 @@ export default function Cartas({pokemon }) {
             {
                 pokemon.map((poke) => {
                     return (
-                        <div className="card bg-white">
-                            <div className="card-img-top h-75">
+                        <div className="card bg-white bg-opacity-75">
+                            <div className="card-img-top h-75 ">
                                 <img className="h-100 w-50" src={poke.sprites.other.dream_world.front_default}></img>
                             </div>
                             <div className="card-body">

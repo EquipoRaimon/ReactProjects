@@ -29,7 +29,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className='body'>
       <header>
         <Navbar></Navbar>
       </header>
