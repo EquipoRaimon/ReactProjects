@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PokeImage from './PokeImage'
 
 export default function PokeCardSmall({pokemon, setPokemon, shiny}){
@@ -6,10 +7,12 @@ export default function PokeCardSmall({pokemon, setPokemon, shiny}){
         setPokemon(pokemon)
     }
 
+    const [fondo, setFondo] = useState()
+
     return(
         <>
 
-            <div className="card col-4 " onClick={handleOnClick}>
+            <div className="card m-2 pokeCardSmall" onClick={handleOnClick} >
                 <div className=" mx-auto">
                     
                     <PokeImage pokemon={pokemon} shiny={shiny}/>

@@ -14,23 +14,23 @@ function App() {
   useEffect(() => {
     const getListaPokemon = async () => {
 
-      const url = await fetch("https://pokeapi.co/api/v2/pokedex/"+generacion)
+      const url = await fetch("https://pokeapi.co/api/v2/pokedex/" + generacion)
       const listaPokemonURL = await url.json()
       const { pokemon_entries } = listaPokemonURL
 
-      
-      const listaPokemonResultados = pokemon_entries.map( async (pokemon) => {
-        const auxPokemon = await fetch("https://pokeapi.co/api/v2/pokemon-species/"+pokemon.pokemon_species.name)
-        const dataAuxPokemon=await auxPokemon.json()
-        const urlPokemon = await fetch("https://pokeapi.co/api/v2/pokemon/"+dataAuxPokemon.id)
+
+      const listaPokemonResultados = pokemon_entries.map(async (pokemon) => {
+        const auxPokemon = await fetch("https://pokeapi.co/api/v2/pokemon-species/" + pokemon.pokemon_species.name)
+        const dataAuxPokemon = await auxPokemon.json()
+        const urlPokemon = await fetch("https://pokeapi.co/api/v2/pokemon/" + dataAuxPokemon.id)
         const DatosPokemon = await urlPokemon.json()
         return DatosPokemon
-        
+
       })
-  
+
       const listaPokemonFulfilled = await Promise.allSettled(listaPokemonResultados).then(results => results.map((result) => {
-        if(result.status == "fulfilled"){
-          return result.value          
+        if (result.status == "fulfilled") {
+          return result.value
         }
       }))
       setListaPokemon(listaPokemonFulfilled)
@@ -44,14 +44,14 @@ function App() {
       <header>
         <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny}></NavBar>
       </header>
-      
-      <main className='mx-auto'>
+
+      <main >
         <Loading listaPokemon={listaPokemon}></Loading>
-        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon}/>
-        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon} shiny={shiny}/>
-        
+        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon} />
+        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} />
+
       </main>
-    
+
     </>
   )
 }

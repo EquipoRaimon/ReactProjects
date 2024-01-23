@@ -7,7 +7,7 @@ export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny})
   }
 
   return(
-    <div className='d-flex flex-wrap '>
+    <div className='d-flex flex-wrap my-2 '>
       {
         listaPokemon.map((poke) => {
           if(poke.sprites.other["official-artwork"].front_default == null){

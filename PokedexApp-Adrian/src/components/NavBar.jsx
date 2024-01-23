@@ -75,11 +75,11 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
                         </div>
 
                         <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" onChange={cambiarShiny}/>
-                        <label className="btn btn-outline-primary me-2" htmlFor="btn-check">Shiny</label>
+                        <label className="btn btn-outline-primary me-lg-2 mb-2 mb-lg-0" htmlFor="btn-check">Shiny</label>
 
 
                         <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                            <input className="form-control me-2" type="search" placeholder="Buscar Pokemon" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value)}/>
+                            <input className="form-control me-2" type="search" placeholder="Buscar nombre o Id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value)}/>
                             <button className="btn btn-outline-success" type="submit">Buscar</button>
                         </form>
                     </div>
