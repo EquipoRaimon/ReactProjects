@@ -1,16 +1,28 @@
-export default function Cartas({pokemon }) {
+import './carta.css'
+
+
+
+export default function Cartas({pokemon, pokemito, setpokemito}) {
+    if(pokemito){
+        return <></>
+    }
+
+    function handleOnClick(poke){
+        setpokemito(poke)
+    }
+
     return (
-        <div className="row row-cols-6">
+        <div className="d-flex flex-wrap">
             {
                 pokemon.map((poke) => {
                     return (
-                        <div className="card bg-white bg-opacity-75">
+                        <div key={poke.id} className="card bg-white bg-opacity-75 px-0 carta" onClick={() => handleOnClick(poke)}>
                             <div className="card-img-top h-75 ">
-                                <img className="h-100 w-50" src={poke.sprites.other.dream_world.front_default}></img>
+                                <img className="h-100 w-75" src={poke.sprites.other.home.front_default}></img>
                             </div>
                             <div className="card-body">
-                                <h5 className="card-title">{poke.id}</h5>
-                                <p className="card-text">{poke.name}</p>
+                                <h5 className="texto card-title">{poke.id}</h5>
+                                <p className="texto card-text">{poke.name}</p>
                             </div>
                         </div>
                     )
