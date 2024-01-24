@@ -9,7 +9,8 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
       }
     async function handleSubmit(e){
         e.preventDefault()
-        const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+buscarPokemon)
+        const nombre = buscarPokemon.toLowerCase()
+        const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+nombre)
         if (respuesta.ok) {
 
             const respuestaJson = await respuesta.json()
@@ -37,7 +38,7 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
     return(
         <>
-            <nav className="navbar navbar-expand-lg bg-light ">
+            <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
                 <div className="container-fluid ">
                     <div className="navbar-brand">
                         <img src='../src/assets/pikachu.png' className="logo"/>

@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <header>
+      <header className='sticky-top'>
         <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny}></NavBar>
       </header>
 

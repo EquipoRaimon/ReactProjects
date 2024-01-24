@@ -1,7 +1,6 @@
 body{
-    background-color: aquamarine;
+    background-color: white;
 }
-
 
 main{
     width: 80vw;
@@ -9,22 +8,13 @@ main{
 }
 
 nav{
-    font-size: 2vw;
+    font-size: 1.5em;
 }
+
 .logo{
-    width: 4vw;
-}
-.carga{
-    width: 30vw;
+    width: 3em;
 }
 
-.pantalla-carga{
-    width: 50vw;
-}
-
-.texto-carga{
-    margin: auto;
-}
 .pokeimg{
     width: 25vw;
 }
