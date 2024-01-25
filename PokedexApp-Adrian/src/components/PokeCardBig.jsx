@@ -42,34 +42,29 @@ export default function PokeCardSmall({pokemon, setPokemon, shiny}){
 
         return colores[color]
     }
+    
+    function mostrarTipos(){
+        const tipos = []
+        pokemon.types.map((poke)=>{
+            tipos.push(poke.type.name)
+        })
+        return tipos
+    }
+
+    console.log(mostrarTipos().toString().replace(",",", "))
+    console.log(mostrarTipos().toString().replace(",","\n"))
 
     return(
         <>
-            <div className="card w-50 mx-auto mt-5" style={setColor()}>
+            <div className="card col-8 mx-auto mt-3 pb-3" style={setColor()}>
 
-                <div className='boton-volver ms-2 mt-2'>
-                    <img src='../src/assets/atras.svg'  onClick={handleClick}/>
-
-                </div>
+                <button type="button" className="btn-close ms-3 mt-3 btn btn-lg " aria-label="Close" onClick={handleClick}></button>
 
                 <div className="mx-auto">
                     
                     <PokeImage pokemon={pokemon} shiny={shiny}/>
-                    
-                </div>
-                <div className="mx-auto">
-                    <h5 className="">{"#"+pokemon.id}</h5>
-                    <p className="">{pokemon.name}</p>
-                    {
-                        pokemon.types.map((poke)=>{
-                            return(
-                               <p>{poke.type.name}</p> 
-                            )
-                            
-
-                        })
-                    }
-                    
+                    <p className="card-text text-center "><span className='fw-bold'>{"#"+pokemon.id}</span> {pokemon.name}</p>
+                    <p>{mostrarTipos().toString().replace(",",", ")}</p>
                 </div>
             </div>
         </>

@@ -10,6 +10,7 @@ function App() {
   const [generacion, setGeneracion] = useState(2);
   const [pokemon, setPokemon] = useState();
   const [shiny, setShiny] = useState(0);
+  const [tipoFiltrado, setTipoFiltrado] = useState("all");
 
   useEffect(() => {
     const getListaPokemon = async () => {
@@ -39,15 +40,22 @@ function App() {
     getListaPokemon()
   }, [generacion])
 
+  //En la lista de cartas, las cartas ocupan un espacio por la derecha que no debería.
+  // Buscar como se utiliza Toasts y Modals en Bootstrap
+  // Añadir progress bar de bootstrap en cartaBig
+  // Mirar como funciona navs and tabs
+
   return (
     <>
       <header className='sticky-top'>
-        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny}></NavBar>
+        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny} setListaPokemon={setListaPokemon} setTipoFiltrado={setTipoFiltrado}></NavBar>
       </header>
 
       <main >
         <Loading listaPokemon={listaPokemon}></Loading>
-        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon} />
+
+        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon} tipoFiltrado={tipoFiltrado}/>
+
         <PokeCardBig pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} />
 
       </main>

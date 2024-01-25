@@ -1,5 +1,5 @@
 body{
-    background-color: white;
+    background-color: #f7f7f9;
 }
 
 main{
@@ -8,7 +8,7 @@ main{
 }
 
 nav{
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .logo{
@@ -17,10 +17,6 @@ nav{
 
 .pokeimg{
     width: 25vw;
-}
-
-.boton-volver{
-    width: 4vw;
 }
 
 .boton-volver:hover{

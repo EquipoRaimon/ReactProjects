@@ -1,27 +1,36 @@
 import { useState } from 'react'
 
 
-export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny}){
+export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado}){
+
+    const [buscarPokemon, setBuscarPokemon] = useState();
+
+    const tipos  = ["all", "grass", "water", "fire", "electric", "normal", "poison", "bug", "fairy", "flying", "ground", "rock", "dark", "ghost", "dragon", "psychic", "ice", "fighting", "steel"]
 
     function cambiarGeneracion(e){
         setGeneracion(e.target.value)
         setPokemon()
-      }
-    async function handleSubmit(e){
-        e.preventDefault()
-        const nombre = buscarPokemon.toLowerCase()
-        const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+nombre)
-        if (respuesta.ok) {
-
-            const respuestaJson = await respuesta.json()
-            await Promise.resolve(respuestaJson).then(value => setPokemon(value))
-
-        } else {
-            console.error('No existe ese pokemon');
-            //var myModal = document.getElementById('miModal')
-        }
+        setListaPokemon([])
     }
 
+    async function handleSubmit(e){
+        e.preventDefault()
+        const Auxpoke = buscarPokemon.toLowerCase()
+        if(tipos.includes(Auxpoke)){
+            setTipoFiltrado(Auxpoke)
+        }else{
+            const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+Auxpoke)
+            if (respuesta.ok) {
+
+                const respuestaJson = await respuesta.json()
+                await Promise.resolve(respuestaJson).then(value => setPokemon(value))
+
+            } else {
+                console.error('No existe ese pokemon');
+                //var myModal = document.getElementById('miModal')
+            }
+        }
+    }
 
     function cambiarShiny(){
         if (!shiny) {
@@ -32,10 +41,7 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
         }
     }
-
-
-    const [buscarPokemon, setBuscarPokemon] = useState();
-
+    
     return(
         <>
             <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
@@ -75,7 +81,7 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
                             </li>
                         </div>
 
-                        <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" onChange={cambiarShiny}/>
+                        <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" onChange={cambiarShiny} />
                         <label className="btn btn-outline-primary me-lg-2 mb-2 mb-lg-0" htmlFor="btn-check">Shiny</label>
 
 
@@ -106,7 +112,6 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
                     </div>
                 </div>
             */}
-
 
         </>
     )
