@@ -31,9 +31,12 @@ function App() {
     getPokemon()
   }, [])
 
+
   return (
     <div className='body'>
-      <Navbar></Navbar>
+      <header className='sticky-top'>
+        <Navbar setpokemito={setpokemito}></Navbar>
+      </header>
       <main>
         <Cartas pokemon={pokemon} pokemito={pokemito} setpokemito={setpokemito}></Cartas>
         <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito}></CartaSolitaria>

@@ -7,7 +7,7 @@ export default function CartaSolitaria({ pokemito, setPokemito}) {
 
     return (
         <div className="d-flex flex-wrap">
-            <div className="card bg-white bg-opacity-75 px-0 carta">
+            <div className="card bg-white bg-opacity-75 px-0 carta mx-auto ">
                 <div className="card-img-top h-75 ">
                     <img className="h-100 w-75" src={pokemito.sprites.other.home.front_default}></img>
                 </div>
