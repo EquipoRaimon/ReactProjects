@@ -4,12 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 /*import Form from './componentes/formulario.jsx'*/
 import Cartas from './componentes/cartas.jsx'
+import CartaSolitaria from './componentes/cartaSolitaria.jsx'
 import Navbar from './componentes/navbar.jsx'
 
 
 
 function App() {
   const [pokemon, setPokemon] = useState([])
+  const [pokemito, setpokemito] = useState()
+
   useEffect(() => {
     const getPokemon = async () => {
       const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
@@ -29,12 +32,11 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <header>
-        <Navbar></Navbar>
-      </header>
+    <div className='body'>
+      <Navbar></Navbar>
       <main>
-        <Cartas pokemon={pokemon}></Cartas>
+        <Cartas pokemon={pokemon} pokemito={pokemito} setpokemito={setpokemito}></Cartas>
+        <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito}></CartaSolitaria>
       </main>
     </div>
   )
