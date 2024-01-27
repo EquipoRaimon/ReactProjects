@@ -35,8 +35,8 @@ export default function CartaSolitaria({pokemito, setpokemito}) {
 
     return (
         <div className="d-flex flex-wrap">
-            <div className="card bg-opacity-75 px-0 carta mx-auto" style={coloresPokemon(pokemito)}>
-                <button type='button' className='ms-4 w-25 bg-transparent border-0' onClick={() => handleOnClick()}>
+            <div className="card mx-auto cartaSola" style={coloresPokemon(pokemito)}>
+                <button type='button' className="w-25 bg-transparent border-0" onClick={() => handleOnClick()}>
                     <img src={imagenes.img5} className='w-100'/>
                 </button>
                 <div className=" h-75 ">
