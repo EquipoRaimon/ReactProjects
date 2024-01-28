@@ -1,20 +1,28 @@
 import { useState } from 'react'
 
 
-export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado}){
+export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado, generacion}){
 
     const [buscarPokemon, setBuscarPokemon] = useState();
 
     const tipos  = ["all", "grass", "water", "fire", "electric", "normal", "poison", "bug", "fairy", "flying", "ground", "rock", "dark", "ghost", "dragon", "psychic", "ice", "fighting", "steel"]
 
     function cambiarGeneracion(e){
-        setGeneracion(e.target.value)
+        if (generacion != e.target.value) {
+            setGeneracion(e.target.value)
+            setListaPokemon([])
+        }
         setPokemon()
-        setListaPokemon([])
+        
     }
 
     async function handleSubmit(e){
         e.preventDefault()
+        
+        if (buscarPokemon == "") {
+            setTipoFiltrado("all")
+            return
+        }
         const Auxpoke = buscarPokemon.toLowerCase()
         if(tipos.includes(Auxpoke)){
             setTipoFiltrado(Auxpoke)
@@ -86,8 +94,8 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
 
                         <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                            <input className="form-control me-2" type="search" placeholder="Buscar nombre o Id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value)}/>
-                            <button className="btn btn-outline-success" type="submit">Buscar</button>
+                            <input className="form-control me-2" type="search" placeholder="Enter name, type or id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value) }/>
+                            <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
                 </div>

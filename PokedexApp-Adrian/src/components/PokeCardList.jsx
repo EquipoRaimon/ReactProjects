@@ -1,12 +1,10 @@
 import PokeCardSmall from './PokeCardSmall'
 
-export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, tipoFiltrado}){
+export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, tipoFiltrado, setColor, mayuscula}){
 
   if(pokemon){
     return <></>
   }
-
-  console.log(tipoFiltrado)
 
   function conseguirTipos(pokemon){
     const tipos = []
@@ -23,7 +21,7 @@ export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, 
           listaPokemon.map((poke) => {
             return(
   
-              <PokeCardSmall pokemon={poke} key={poke.id} setPokemon={setPokemon} PokemonSeleccionado={pokemon} shiny={shiny}/>
+              <PokeCardSmall pokemon={poke} key={poke.id} setPokemon={setPokemon} PokemonSeleccionado={pokemon} shiny={shiny} setColor={setColor} mayuscula={mayuscula}/>
   
             )
           })
@@ -40,7 +38,7 @@ export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, 
           const tipos = conseguirTipos(poke)
           if(tipos.includes(tipoFiltrado)){
             return(
-              <PokeCardSmall pokemon={poke} key={poke.id} setPokemon={setPokemon} PokemonSeleccionado={pokemon} shiny={shiny}/>
+              <PokeCardSmall pokemon={poke} key={poke.id} setPokemon={setPokemon} PokemonSeleccionado={pokemon} shiny={shiny} setColor={setColor} mayuscula={mayuscula}/>
             )
           }
         })
