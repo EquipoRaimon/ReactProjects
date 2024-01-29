@@ -1,6 +1,8 @@
 import PokeImage from './PokeImage'
 import PokeDatos from './PokeDatos'
 import PokeStats from './PokeStats'
+import PokeMoves from './PokeMoves'
+import PokeEvo from './PokeEvo'
 
 export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, mayuscula }){
 
@@ -14,13 +16,13 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
 
     const color = pokemon.types[0].type.name
 
-    /*function mostrarTipos(){
+    function mostrarTipos(){
         const tipos = []
         pokemon.types.map((poke)=>{
             tipos.push(poke.type.name)
         })
-        return tipos
-    }*/
+        return tipos.toString().replace(",",", ")
+    }
 
     //console.log(mostrarTipos().toString().replace(",",", "))
     //console.log(mostrarTipos().toString().replace(",","\n"))
@@ -35,7 +37,7 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
                     
                     <PokeImage pokemon={pokemon} shiny={shiny}/>
                     <p className="card-text text-center "><span className='fw-bold'>{"#"+pokemon.id}</span> {mayuscula(pokemon.name)}</p>
-
+                    <p className="card-text text-center ">{mayuscula(mostrarTipos())}</p>
                 </div>
                 
                 <div className='px-3 pt-3 '>
@@ -58,13 +60,13 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
                             <PokeDatos pokemon={pokemon} />
                         </div>
                         <div className="tab-pane fade" id="poke-stats" role="tabpanel" aria-labelledby="stats-tab" tabIndex="0">
-                            <PokeStats pokemon={pokemon} mayuscula={mayuscula}/>
+                            <PokeStats pokemon={pokemon} mayuscula={mayuscula} />
                         </div>
                         <div className="tab-pane fade" id="poke-evo" role="tabpanel" aria-labelledby="evo-tab" tabIndex="0">
-                            Evoluciona a charmander
+                            <PokeEvo pokemon={pokemon} />
                         </div>
                         <div className="tab-pane fade" id="poke-moves" role="tabpanel" aria-labelledby="moves-tab" tabIndex="0">
-                            Hidropulso
+                            <PokeMoves pokemon={pokemon} />
                         </div>
                     </div>
                 </div>

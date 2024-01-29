@@ -21,11 +21,13 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
         
         if (buscarPokemon == "") {
             setTipoFiltrado("all")
+            setPokemon()
             return
         }
         const Auxpoke = buscarPokemon.toLowerCase()
         if(tipos.includes(Auxpoke)){
             setTipoFiltrado(Auxpoke)
+            setPokemon()
         }else{
             const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+Auxpoke)
             if (respuesta.ok) {
@@ -93,8 +95,8 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
                         <label className="btn btn-outline-primary me-lg-2 mb-2 mb-lg-0" htmlFor="btn-check">Shiny</label>
 
 
-                        <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                            <input className="form-control me-2" type="search" placeholder="Enter name, type or id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value) }/>
+                        <form className="d-flex" role="search" onSubmit={handleSubmit} id="formPokemon">
+                            <input className="form-control me-2" type="search" id="inputPokemon" placeholder="Enter name, type or id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value) }/>
                             <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>

@@ -9,10 +9,6 @@ export default function PokeStats({ pokemon, mayuscula }) {
     acumulador + valorActual
     )
 
-    function mayuscula(palabra){
-        return palabra.charAt(0).toUpperCase() + palabra.slice(1)
-    }
-
     return (
         <>
             <div className="p-2">

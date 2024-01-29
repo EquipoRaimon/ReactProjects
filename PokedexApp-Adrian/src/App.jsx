@@ -34,7 +34,7 @@ function App() {
     shadow : {backgroundColor: '#212F3D'}, 
     unknown : {backgroundColor: '#black'}
   }
-
+  
   useEffect(() => {
     const getListaPokemon = async () => {
 
