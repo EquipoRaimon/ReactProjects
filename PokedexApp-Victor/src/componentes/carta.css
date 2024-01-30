@@ -1,5 +1,14 @@
 .carta{
-    width: calc(100% / 6);
+    
+}
+
+.carta:hover{
+    border: 6px white solid;
+    cursor: pointer;
+}
+
+.cartaSola:hover{
+    cursor: pointer;
 }
 
 .texto{
@@ -7,3 +16,4 @@
     font-weight: bold;
     font-size: 20px;
 }
+

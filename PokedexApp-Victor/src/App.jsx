@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-/*import Form from './componentes/formulario.jsx'*/
 import Cartas from './componentes/cartas.jsx'
 import CartaSolitaria from './componentes/cartaSolitaria.jsx'
 import Navbar from './componentes/navbar.jsx'
@@ -23,7 +20,7 @@ function App() {
         const response = await fetch(pokemon.url)
         const poke = await response.json()
         return poke
-        
+
       })
       setPokemon(await Promise.all(newPokemon));
     }
@@ -31,14 +28,18 @@ function App() {
     getPokemon()
   }, [])
 
+  
   return (
-    <div className='body'>
-      <Navbar></Navbar>
+    <>
+      <header className='sticky-top'>
+        <Navbar setpokemito={setpokemito}></Navbar>
+      </header>
       <main>
         <Cartas pokemon={pokemon} pokemito={pokemito} setpokemito={setpokemito}></Cartas>
         <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito}></CartaSolitaria>
       </main>
-    </div>
+    </>
+
   )
 }
 
