@@ -1,26 +1,46 @@
 import { useState } from 'react'
 
 
-export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny}){
+export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado, generacion}){
+
+    const [buscarPokemon, setBuscarPokemon] = useState();
+
+    const tipos  = ["all", "grass", "water", "fire", "electric", "normal", "poison", "bug", "fairy", "flying", "ground", "rock", "dark", "ghost", "dragon", "psychic", "ice", "fighting", "steel"]
 
     function cambiarGeneracion(e){
-        setGeneracion(e.target.value)
-        setPokemon()
-      }
-    async function handleSubmit(e){
-        e.preventDefault()
-        const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+buscarPokemon)
-        if (respuesta.ok) {
-
-            const respuestaJson = await respuesta.json()
-            await Promise.resolve(respuestaJson).then(value => setPokemon(value))
-
-        } else {
-            console.error('No existe ese pokemon');
-            //var myModal = document.getElementById('miModal')
+        if (generacion != e.target.value) {
+            setGeneracion(e.target.value)
+            setListaPokemon([])
         }
+        setPokemon()
+        
     }
 
+    async function handleSubmit(e){
+        e.preventDefault()
+        
+        if (buscarPokemon == "") {
+            setTipoFiltrado("all")
+            setPokemon()
+            return
+        }
+        const Auxpoke = buscarPokemon.toLowerCase()
+        if(tipos.includes(Auxpoke)){
+            setTipoFiltrado(Auxpoke)
+            setPokemon()
+        }else{
+            const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+Auxpoke)
+            if (respuesta.ok) {
+
+                const respuestaJson = await respuesta.json()
+                await Promise.resolve(respuestaJson).then(value => setPokemon(value))
+
+            } else {
+                console.error('No existe ese pokemon');
+                //var myModal = document.getElementById('miModal')
+            }
+        }
+    }
 
     function cambiarShiny(){
         if (!shiny) {
@@ -31,13 +51,10 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
         }
     }
-
-
-    const [buscarPokemon, setBuscarPokemon] = useState();
-
+    
     return(
         <>
-            <nav className="navbar navbar-expand-lg bg-light ">
+            <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
                 <div className="container-fluid ">
                     <div className="navbar-brand">
                         <img src='../src/assets/pikachu.png' className="logo"/>
@@ -74,13 +91,13 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
                             </li>
                         </div>
 
-                        <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" onChange={cambiarShiny}/>
+                        <input type="checkbox" className="btn-check" id="btn-check" autoComplete="off" onChange={cambiarShiny} />
                         <label className="btn btn-outline-primary me-lg-2 mb-2 mb-lg-0" htmlFor="btn-check">Shiny</label>
 
 
-                        <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                            <input className="form-control me-2" type="search" placeholder="Buscar nombre o Id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value)}/>
-                            <button className="btn btn-outline-success" type="submit">Buscar</button>
+                        <form className="d-flex" role="search" onSubmit={handleSubmit} id="formPokemon">
+                            <input className="form-control me-2" type="search" id="inputPokemon" placeholder="Enter name, type or id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value) }/>
+                            <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
@@ -105,7 +122,6 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
                     </div>
                 </div>
             */}
-
 
         </>
     )

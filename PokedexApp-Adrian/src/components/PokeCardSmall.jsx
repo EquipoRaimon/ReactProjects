@@ -1,28 +1,35 @@
-import { useState } from 'react'
 import PokeImage from './PokeImage'
 
-export default function PokeCardSmall({pokemon, setPokemon, shiny}){
+export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, mayuscula}){
+
+    const color = pokemon.types[0].type.name
 
     function handleOnClick(){
         setPokemon(pokemon)
     }
 
-    const [fondo, setFondo] = useState()
+    function mostrarTipos(){
+        const tipos = []
+        pokemon.types.map((poke)=>{
+            tipos.push(poke.type.name)
+        })
+        return tipos.toString().replace(",",", ")
+    }
 
     return(
         <>
-
-            <div className="card m-2 pokeCardSmall" onClick={handleOnClick} >
-                <div className=" mx-auto">
+        <div className='col-12 col-md-6 col-lg-4'>
+            <div className="card pokeCardSmall" onClick={handleOnClick} style={setColor(color)} >
                     
+                <div className="card-body mx-auto ">
                     <PokeImage pokemon={pokemon} shiny={shiny}/>
+                    <p className="card-text text-center "><span className='fw-bold'>{"#"+pokemon.id}</span> {mayuscula(pokemon.name)}</p>
+                    <p className="card-text text-center ">{mayuscula(mostrarTipos())}</p>
+                </div>
 
-                </div>
-                <div className="card-body mx-auto">
-                    <h5 className="card-title">{"#"+pokemon.id}</h5>
-                    <p className="card-text">{pokemon.name}</p>
-                </div>
             </div>
+        </div>
+            
             
         </>
     )

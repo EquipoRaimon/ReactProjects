@@ -10,7 +10,31 @@ function App() {
   const [generacion, setGeneracion] = useState(2);
   const [pokemon, setPokemon] = useState();
   const [shiny, setShiny] = useState(0);
+  const [tipoFiltrado, setTipoFiltrado] = useState("all");
 
+  const colores = {
+    grass : {backgroundColor: '#49d0b0'},
+    water : {backgroundColor: '#76befe'},
+    fire : {backgroundColor: '#fa6d6b'}, 
+    electric : {backgroundColor: '#F8D030'}, 
+    normal : {backgroundColor: '#A8A77A'}, 
+    poison : {backgroundColor: '#A33EA1'}, 
+    bug : {backgroundColor: '#A6B91A'}, 
+    fairy : {backgroundColor: '#D685AD'}, 
+    flying : {backgroundColor: '#A98FF3'}, 
+    ground : {backgroundColor: '#E2BF65'}, 
+    rock : {backgroundColor: '#B6A136'}, 
+    dark : {backgroundColor: '#705746'}, 
+    ghost : {backgroundColor: '#735797'}, 
+    dragon : {backgroundColor: '#6F35FC'}, 
+    psychic : {backgroundColor: '#F95587'}, 
+    ice : {backgroundColor: '#96D9D6'}, 
+    fighting : {backgroundColor: '#C22E28'}, 
+    steel : {backgroundColor: '#B7B7CE'},
+    shadow : {backgroundColor: '#212F3D'}, 
+    unknown : {backgroundColor: '#black'}
+  }
+  
   useEffect(() => {
     const getListaPokemon = async () => {
 
@@ -34,21 +58,40 @@ function App() {
         }
       }))
       setListaPokemon(listaPokemonFulfilled)
-      console.log(listaPokemonFulfilled)
+
     }
     getListaPokemon()
   }, [generacion])
 
+  function setColor(color){
+    return colores[color]
+  }
+
+  function mayuscula(palabra){
+    return palabra.charAt(0).toUpperCase() + palabra.slice(1)
+  }
+
+  //En la lista de cartas, las cartas ocupan un espacio por la derecha que no debería.
+  // Buscar como se utiliza Toasts y Modals en Bootstrap
+  // Añadir progress bar de bootstrap en cartaBig
+  // Mirar como funciona navs and tabs
+  // Tanto la función de los colores como la de las mayúsculas se puede meter dentro de App.jsx y mandarlas a los hijos
+  // Puedo poner que al enviar el text input vacío: 1. No haga nada, 2. Muestre todos los pokemon, haga una busqueda "all"
+  // Dentro de pokemon-species/{id}/ sale la evolution chain
+  // Dentro de pokemon/{id} sale la location_area_encounters
+
   return (
     <>
-      <header>
-        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny}></NavBar>
+      <header className='sticky-top'>
+        <NavBar setGeneracion={setGeneracion} setPokemon={setPokemon} setShiny={setShiny} shiny={shiny} setListaPokemon={setListaPokemon} setTipoFiltrado={setTipoFiltrado} generacion={generacion}></NavBar>
       </header>
 
       <main >
         <Loading listaPokemon={listaPokemon}></Loading>
-        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon} />
-        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} />
+
+        <PokeCardList listaPokemon={listaPokemon} pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} value={pokemon} tipoFiltrado={tipoFiltrado} setColor={setColor} mayuscula={mayuscula}/>
+
+        <PokeCardBig pokemon={pokemon} setPokemon={setPokemon} shiny={shiny} setColor={setColor} mayuscula={mayuscula}/>
 
       </main>
 
