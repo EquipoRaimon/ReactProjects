@@ -1,8 +1,9 @@
 .carta{
-    width: calc(100% / 6);
+    
 }
 
 .carta:hover{
+    border: 6px white solid;
     cursor: pointer;
 }
 
@@ -15,3 +16,4 @@
     font-weight: bold;
     font-size: 20px;
 }
+

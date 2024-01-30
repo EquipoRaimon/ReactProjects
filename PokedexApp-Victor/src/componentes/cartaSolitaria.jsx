@@ -28,7 +28,8 @@ export default function CartaSolitaria({pokemito, setpokemito}) {
           electric : {backgroundColor: '#F8D030'},
           psychic : {backgroundColor: '#F85888'},
           ice : {backgroundColor: '#98D8D8'},
-          dragon : {backgroundColor: '#7038F8'}
+          dragon : {backgroundColor: '#7038F8'},
+          fairy : {backgroundColor: '#FFAAEE'}
         }
         return colorPokemon[color]
       }
