@@ -71,12 +71,13 @@ function App() {
     return palabra.charAt(0).toUpperCase() + palabra.slice(1)
   }
 
-  //En la lista de cartas, las cartas ocupan un espacio por la derecha que no debería.
+  //console.log(listaPokemon)
+
   // Buscar como se utiliza Toasts y Modals en Bootstrap
   // Añadir progress bar de bootstrap en cartaBig
   // Mirar como funciona navs and tabs
   // Tanto la función de los colores como la de las mayúsculas se puede meter dentro de App.jsx y mandarlas a los hijos
-  // Puedo poner que al enviar el text input vacío: 1. No haga nada, 2. Muestre todos los pokemon, haga una busqueda "all"
+
   // Dentro de pokemon-species/{id}/ sale la evolution chain
   // Dentro de pokemon/{id} sale la location_area_encounters
 

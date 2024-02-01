@@ -24,9 +24,6 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
         return tipos.toString().replace(",",", ")
     }
 
-    //console.log(mostrarTipos().toString().replace(",",", "))
-    //console.log(mostrarTipos().toString().replace(",","\n"))
-
     return(
         <>
             <div className="card col-12 col-md-8 mx-auto mt-3 pb-3" style={setColor(color)}>
@@ -57,13 +54,13 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
                     </ul>
                     <div className="tab-content bg-light-subtle rounded-bottom-2  pb-1" id="nav-tabContent">
                         <div className="tab-pane fade" id="poke-about" role="tabpanel" aria-labelledby="about-tab" tabIndex="0">
-                            <PokeDatos pokemon={pokemon} />
+                            <PokeDatos pokemon={pokemon} mayuscula={mayuscula}/>
                         </div>
                         <div className="tab-pane fade" id="poke-stats" role="tabpanel" aria-labelledby="stats-tab" tabIndex="0">
                             <PokeStats pokemon={pokemon} mayuscula={mayuscula} />
                         </div>
                         <div className="tab-pane fade" id="poke-evo" role="tabpanel" aria-labelledby="evo-tab" tabIndex="0">
-                            <PokeEvo pokemon={pokemon} />
+                            <PokeEvo pokemon={pokemon} shiny={shiny}/>
                         </div>
                         <div className="tab-pane fade" id="poke-moves" role="tabpanel" aria-labelledby="moves-tab" tabIndex="0">
                             <PokeMoves pokemon={pokemon} />
