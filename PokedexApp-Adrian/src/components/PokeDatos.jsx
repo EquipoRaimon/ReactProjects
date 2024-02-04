@@ -20,10 +20,10 @@ export default function PokeDatos({ pokemon, mayuscula }) {
         getLocalizacionPokemon()
 
 
-    }, [])
+    }, [pokemon])
 
     if (especiePokemon == undefined || localizacionPokemon == undefined) {
-        return <></>
+        return null
     }
 
     function getDescripcion() {
