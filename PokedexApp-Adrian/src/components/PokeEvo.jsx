@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PokeImage from "./PokeImage";
 import PokeCadenaEvo from "./PokeCadenaEvo";
 
-export default function PokeEvo({pokemon, shiny}){
+export default function PokeEvo({pokemon, shiny, mayuscula}){
 
     const[cadenaEvolutiva, setCadenaEvolutiva] = useState()
     const[primeraEvolucion, setPrimeraEvolucion] = useState([])
@@ -60,13 +60,11 @@ export default function PokeEvo({pokemon, shiny}){
     console.log(primeraEvolucion)
     console.log(segundaEvolucion)
     console.log(terceraEvolucion)
-    //Así sería el componente imagen <PokeImage pokemon={base} shiny={shiny}/>
 
-    
     return(
         <>
             <div>
-                <PokeCadenaEvo shiny={shiny} primeraEvolucion={primeraEvolucion} segundaEvolucion={segundaEvolucion} terceraEvolucion={terceraEvolucion}></PokeCadenaEvo>
+                <PokeCadenaEvo shiny={shiny} primeraEvolucion={primeraEvolucion} segundaEvolucion={segundaEvolucion} terceraEvolucion={terceraEvolucion} mayuscula={mayuscula}></PokeCadenaEvo>
             </div>
         
         </>
