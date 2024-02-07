@@ -17,3 +17,6 @@
     font-size: 20px;
 }
 
+.atras{
+    filter: invert(100%);
+}

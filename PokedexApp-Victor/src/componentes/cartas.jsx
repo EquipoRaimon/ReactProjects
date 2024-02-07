@@ -3,7 +3,7 @@ import './carta.css'
 
 
 
-export default function Cartas({ pokemon, pokemito, setpokemito, coloresPokemon }) {
+export default function Cartas({ pokemon, pokemito, setpokemito, coloresPokemon}) {
     if (pokemito) {
         return <></>
     }
