@@ -54,7 +54,7 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
                     </ul>
                     <div className="tab-content bg-light-subtle rounded-bottom-2  pb-1" id="nav-tabContent">
                         <div className="tab-pane fade" id="poke-about" role="tabpanel" aria-labelledby="about-tab" tabIndex="0">
-                            <PokeDatos pokemon={pokemon} mayuscula={mayuscula}/>
+                            <PokeDatos key={pokemon.name} pokemon={pokemon} mayuscula={mayuscula}/>
                         </div>
                         <div className="tab-pane fade" id="poke-stats" role="tabpanel" aria-labelledby="stats-tab" tabIndex="0">
                             <PokeStats pokemon={pokemon} mayuscula={mayuscula} />
@@ -63,7 +63,7 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
                             <PokeEvo key={pokemon.name} pokemon={pokemon} shiny={shiny} mayuscula={mayuscula}/>
                         </div>
                         <div className="tab-pane fade" id="poke-moves" role="tabpanel" aria-labelledby="moves-tab" tabIndex="0">
-                            <PokeMoves pokemon={pokemon} />
+                            <PokeMoves pokemon={pokemon} mayuscula={mayuscula}/>
                         </div>
                     </div>
                 </div>

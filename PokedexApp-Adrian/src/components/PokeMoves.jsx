@@ -1,4 +1,4 @@
-export default function PokeMoves({pokemon}){
+export default function PokeMoves({pokemon, mayuscula}){
 
     return (
         <>
@@ -15,7 +15,7 @@ export default function PokeMoves({pokemon}){
                         pokemon.moves.map((move) => {
                             return (
                                 <tr key={move.move.name}>
-                                    <td>{move.move.name}</td>
+                                    <td>{mayuscula(move.move.name)}</td>
                                     <td>{move.version_group_details[0].level_learned_at}</td>
                                     <td>{move.version_group_details[0].move_learn_method.name}</td>
                                 </tr>
