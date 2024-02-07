@@ -32,14 +32,14 @@ const [valor, setValor] = useState(1)
             rock: { backgroundColor: '#B8A038' },
             bug: { backgroundColor: '#A8B820' },
             ghost: { backgroundColor: '#705898' },
-            fire: { backgroundColor: '#F08030' },
+            fire: { backgroundColor: '#FF3D3D' },
             water: { backgroundColor: '#6890F0' },
-            grass: { backgroundColor: '#78C850' },
-            electric: { backgroundColor: '#F8D030' },
+            grass: { backgroundColor: '#59DE39' },
+            electric: { backgroundColor: '#FFFB00' },
             psychic: { backgroundColor: '#F85888' },
             ice: { backgroundColor: '#98D8D8' },
             dragon: { backgroundColor: '#7038F8' },
-            fairy: { backgroundColor: '#FFAAEE' }
+            fairy : {backgroundColor: '#FFAAEE'}
         }
         return colorPokemon[color]
     }
@@ -51,7 +51,7 @@ const [valor, setValor] = useState(1)
                     <img src={imagenes.img5} className='w-25 atras' />
                 </button>
             </div>
-            <div className="card d-flex flex-row">
+            <div className="d-flex flex-row">
                 <div className="card cartaSola d-flex w-50" style={coloresPokemon(pokemito)}>
                     <div className=" h-75 ">
                         <img className="h-100 w-75" src={pokemito.sprites.other.home.front_default}></img>
@@ -61,16 +61,16 @@ const [valor, setValor] = useState(1)
                         <p className="texto card-text">{pokemito.name}</p>
                     </div>
                 </div>
-                <div className='card mx-auto w-100 '>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className='card mx-auto w-100 bg-light-subtle'>
+                    <nav className="navbar navbar-expand-lg navbar-light">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">ESTADISTICAS</a>
+                            <a className="navbar-brand font-weight-bold" href="#">ESTADISTICAS</a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div className="navbar-nav">
-                                    <button className="nav-link active" aria-current="page" value="1" onClick={(e) => cambiar(e)}>ABOUT</button>
+                                    <button className="nav-link" value="1" onClick={(e) => cambiar(e)}>ABOUT</button>
                                     <button className="nav-link" value="2" onClick={(e) => cambiar(e)}>BASE STATS</button>
                                     <button className="nav-link" value="3" onClick={(e) => cambiar(e)}>EVOLUTIONS</button>
                                     <button className="nav-link" value="4" onClick={(e) => cambiar(e)}>MOVES</button>
