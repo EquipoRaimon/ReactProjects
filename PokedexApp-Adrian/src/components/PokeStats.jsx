@@ -42,6 +42,9 @@ export default function PokeStats({ pokemon, mayuscula }) {
                 </div>
 
             </div>
+            
+            <hr className="hr hr-blurry mx-5" />
+
         </>
     )
 }

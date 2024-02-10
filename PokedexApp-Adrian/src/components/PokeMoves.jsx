@@ -24,6 +24,9 @@ export default function PokeMoves({pokemon, mayuscula}){
                     }
                 </tbody>
             </table>
+
+            <hr className="hr hr-blurry mx-5" />
+
         </>
     )
 

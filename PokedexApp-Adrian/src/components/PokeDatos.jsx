@@ -53,42 +53,46 @@ export default function PokeDatos({ pokemon, mayuscula }) {
     }
 
     return (
-        <dl className="row ms-1 pt-2">
-            <dt className="col-md-4">Description</dt>
-            <dd className="col-md-8">{getDescripcion()}</dd>
+        <>
+            <dl className="row ms-1 pt-2">
+                <dt className="col-md-4">Description</dt>
+                <dd className="col-md-8">{getDescripcion()}</dd>
 
-            <dt className="col-md-4">Species</dt>
-            <dd className="col-md-8">{especiePokemon.name}</dd>
+                <dt className="col-md-4">Species</dt>
+                <dd className="col-md-8">{especiePokemon.name}</dd>
 
-            <dt className="col-md-4">Height</dt>
-            <dd className="col-md-8">{pokemon.height / 10} m</dd>
+                <dt className="col-md-4">Height</dt>
+                <dd className="col-md-8">{pokemon.height / 10} m</dd>
 
-            <dt className="col-md-4">Weight</dt>
-            <dd className="col-md-8">{pokemon.weight / 10} kg</dd>
+                <dt className="col-md-4">Weight</dt>
+                <dd className="col-md-8">{pokemon.weight / 10} kg</dd>
 
-            <dt className="col-md-4">Abilities</dt>
-            <dd className="col-md-8">
-                {pokemon.abilities.map((habilidad) => {
-                    return (
-                        <p key={habilidad.ability.name}>{mayuscula(habilidad.ability.name)}</p>
-                    )
-                }
-                )}
-            </dd>
+                <dt className="col-md-4">Abilities</dt>
+                <dd className="col-md-8">
+                    {pokemon.abilities.map((habilidad) => {
+                        return (
+                            <p key={habilidad.ability.name}>{mayuscula(habilidad.ability.name)}</p>
+                        )
+                    }
+                    )}
+                </dd>
 
-            <dt className="col-md-4">Capture zones</dt>
-            <dd className="col-md-8">
-                {localizacionPokemon.map((localizacion) => {
+                <dt className="col-md-4">Capture zones</dt>
+                <dd className="col-md-8">
+                    {localizacionPokemon.map((localizacion) => {
                         return (
                             <p key={localizacion.location_area.name}>{mayuscula(localizacion.location_area.name)}</p>
                         )
                     }
                     )}
-                {
-                    localizacionNull()
-                }
-            </dd>
-        </dl>
+                    {
+                        localizacionNull()
+                    }
+                </dd>
+            </dl>
+
+            <hr className="hr hr-blurry mx-5" />
+        </>
     )
 
 }

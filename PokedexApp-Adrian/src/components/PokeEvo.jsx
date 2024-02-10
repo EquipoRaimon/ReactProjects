@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import PokeImage from "./PokeImage";
 import PokeCadenaEvo from "./PokeCadenaEvo";
 
 export default function PokeEvo({pokemon, shiny, mayuscula}){
@@ -11,7 +10,7 @@ export default function PokeEvo({pokemon, shiny, mayuscula}){
 
 
     useEffect( () => {
-        
+
         const getCadenaEvolutiva = async () => {
             const pokemon_species = await fetch(pokemon.species.url).then(data => data.json())
             const evolution_chain = await fetch(pokemon_species.evolution_chain.url).then(data => data.json())
@@ -47,7 +46,7 @@ export default function PokeEvo({pokemon, shiny, mayuscula}){
             setCadenaEvolutiva(evolution_chain)
         }
         if (primeraEvolucion.length == 0) {
-           getCadenaEvolutiva() 
+           getCadenaEvolutiva()
         }
 
     }, [])
@@ -57,41 +56,68 @@ export default function PokeEvo({pokemon, shiny, mayuscula}){
     }
 
     function getEvoDetails(evolution_details) {
-        //console.log(evolution_details)
 
         const evoDetails = evolution_details.filter( evo => {
             if (evo.min_level != null) {
-                //console.log({'min_level' : evo.min_level})
-                return {min_level : evo.min_level};
+                return evo;
+
             }else if(evo.item != null){
-                //console.log(evo.item.name)
-                return {item : evo.item.name};
+                return evo;
+
             }else if (evo.min_happiness != null) {
-                return {min_happiness : evo.min_happiness};
+                return evo;
+
+            }else if (evo.location != null) {
+                return evo;
+
+            }else{
+                return evo;
+
             }
         } )
+        
         if (evoDetails[0].min_level != null) {
-            //console.log({'min_level' : evoDetails.min_level})
-            return {min_level : evoDetails[0].min_level};
+            return {
+                trigger : evoDetails[0].trigger.name,
+                min_level : evoDetails[0].min_level
+            };
+
         }else if(evoDetails[0].item != null){
-            //console.log(evoDetails.item.name)
-            return {item : evoDetails[0].item.name};
+            return {
+                trigger : evoDetails[0].trigger.name,
+                item : evoDetails[0].item.name
+            };
+
         }else if (evoDetails[0].min_happiness != null) {
-            return {min_happiness : evoDetails[0].min_happiness};
+            return {
+                trigger : evoDetails[0].trigger.name,
+                min_happiness : evoDetails[0].min_happiness
+            };
+
+        }else if (evoDetails[0].location != null) {
+            return {
+                trigger : evoDetails[0].trigger.name,
+                location : evoDetails[0].location.name
+            };
+
+        }else{
+            return {trigger : evoDetails[0].trigger.name}
+
         }
 
     }
-
-    //console.log(primeraEvolucion)
-    //console.log(segundaEvolucion)
-    //console.log(terceraEvolucion)
+/*
+    Creo que debería añadir el trigger en todos lo pokeEvo
+    Hay algunos pokemon que evolucionan con una felicidad mínima y al subir de nivel
+    Aparte hay algunos, eeveevoluciones!!! que solamente evolucionan al subir de nivel en un sitio en específico, por la cara
+*/
 
     return(
         <>
             <div>
                 <PokeCadenaEvo shiny={shiny} primeraEvolucion={primeraEvolucion} segundaEvolucion={segundaEvolucion} terceraEvolucion={terceraEvolucion} mayuscula={mayuscula}></PokeCadenaEvo>
             </div>
-        
+       
         </>
     )
 }
