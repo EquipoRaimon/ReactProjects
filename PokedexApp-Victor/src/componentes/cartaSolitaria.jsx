@@ -20,30 +20,6 @@ export default function CartaSolitaria({ pokemito, setpokemito, pokemonBuscado, 
         }
     }
 
-    function coloresPokemon(pokemito) {
-        const types = pokemito.types
-        const color = types[0].type.name
-        const colorPokemon = {
-            normal: { backgroundColor: '#A8A878' },
-            fighting: { backgroundColor: '#C03028' },
-            flying: { backgroundColor: '#A890F0' },
-            poison: { backgroundColor: '#A040A0' },
-            ground: { backgroundColor: '#E0C068' },
-            rock: { backgroundColor: '#B8A038' },
-            bug: { backgroundColor: '#A8B820' },
-            ghost: { backgroundColor: '#705898' },
-            fire: { backgroundColor: '#FF3D3D' },
-            water: { backgroundColor: '#6890F0' },
-            grass: { backgroundColor: '#59DE39' },
-            electric: { backgroundColor: '#FFFB00' },
-            psychic: { backgroundColor: '#F85888' },
-            ice: { backgroundColor: '#98D8D8' },
-            dragon: { backgroundColor: '#7038F8' },
-            fairy: { backgroundColor: '#FFAAEE' }
-        }
-        return colorPokemon[color]
-    }
-
     return (
         <div>
             <div>

@@ -21,10 +21,5 @@ export default function BaseStats({pokemito}) {
         <h1>PUNTOS TOTALES:</h1>
         <h4>{resultadoTotal} PTOS</h4>
       </>
-      
-      
-      
-      
-      
     </>)
 }

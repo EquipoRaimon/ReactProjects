@@ -63,7 +63,5 @@ export default function About({ pokemito, ubi, setubi }) {
           </div>
         </div>
       </div>
-
-
     </>)
 }
