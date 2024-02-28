@@ -41,7 +41,8 @@ export default function Cartas({ pokemon, pokemito, setpokemito, coloresPokemon}
             {
                 pokemon.map((poke) => {
                     return (
-                        <div className='p-3'><img className="w-25 mx-auto " src={imagenes.img6}/>
+                        <div className='p-3'>
+                            <img className="w-25 mx-auto " src={imagenes.img6}/>
                             <div key={poke.id} className="card carta" onClick={() => handleOnClick(poke)} style={coloresPokemon(poke)}>
                                 <div className="card-img-top h-75 ">
                                     <img className="h-100 w-75" src={poke.sprites.other.home.front_default}></img>

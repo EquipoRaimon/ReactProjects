@@ -4,9 +4,7 @@ import './navbar.css'
 
 
 
-export default function Navbar({setpokemito}) {
-    const [pokemonBuscado, setPokemonBuscado] = useState();
-
+export default function Navbar({setpokemito, pokemonBuscado, setPokemonBuscado}) {
      async function handleSubmit(){
         const responsePokemon = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonBuscado)
         const responsePokemonJSON = await responsePokemon.json();

@@ -9,6 +9,8 @@ import Navbar from './componentes/navbar.jsx'
 function App() {
   const [pokemon, setPokemon] = useState([])
   const [pokemito, setpokemito] = useState()
+  const [pokemonBuscado, setPokemonBuscado] = useState();
+  const [ubi, setubi] = useState('');
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -32,11 +34,11 @@ function App() {
   return (
     <>
       <header className='sticky-top'>
-        <Navbar setpokemito={setpokemito}></Navbar>
+        <Navbar setpokemito={setpokemito} pokemonBuscado={pokemonBuscado} setPokemonBuscado={setPokemonBuscado}></Navbar>
       </header>
       <main>
         <Cartas pokemon={pokemon} pokemito={pokemito} setpokemito={setpokemito}></Cartas>
-        <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito}></CartaSolitaria>
+        <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito} ubi={ubi} setubi={setubi}></CartaSolitaria>
       </main>
     </>
 
