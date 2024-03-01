@@ -11,6 +11,7 @@ function App() {
   const [pokemito, setpokemito] = useState()
   const [pokemonBuscado, setPokemonBuscado] = useState();
   const [ubi, setubi] = useState('');
+  const [evo, setevo] = useState([]);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -38,7 +39,7 @@ function App() {
       </header>
       <main>
         <Cartas pokemon={pokemon} pokemito={pokemito} setpokemito={setpokemito}></Cartas>
-        <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito} ubi={ubi} setubi={setubi}></CartaSolitaria>
+        <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito} ubi={ubi} setubi={setubi} evo={evo} setevo={setevo}></CartaSolitaria>
       </main>
     </>
 

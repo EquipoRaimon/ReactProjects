@@ -3,7 +3,7 @@ import imagenes from '../assets/imagenes'
 import './carta.css'
 import Estadisticas from './estadisticas'
 
-export default function CartaSolitaria({ pokemito, setpokemito, pokemonBuscado, setPokemonBuscado, ubi, setubi }) {
+export default function CartaSolitaria({ pokemito, setpokemito, pokemonBuscado, setPokemonBuscado, ubi, setubi, evo, setevo}) {
     const [valor, setValor] = useState(1)
 
     if (!pokemito) {
@@ -55,7 +55,7 @@ export default function CartaSolitaria({ pokemito, setpokemito, pokemonBuscado, 
                                 </div>
                             </div>
                         </nav>
-                        <Estadisticas valor={valor} pokemito={pokemito} ubi={ubi} setubi={setubi} />
+                        <Estadisticas valor={valor} pokemito={pokemito} ubi={ubi} setubi={setubi} evo={evo} setevo={setevo} />
                     </div>
                 </div>
             </div>

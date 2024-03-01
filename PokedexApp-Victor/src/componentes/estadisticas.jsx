@@ -3,7 +3,7 @@ import Evoluciones from './evoluciones'
 import Movimientos from './movimientos'
 import BaseStats from './baseStats'
 
-export default function Estadisticas({ valor, pokemito, pokemonBuscado, ubi, setubi}) {
+export default function Estadisticas({ valor, pokemito, ubi, setubi, evo, setevo}) {
     if (valor == 1) {
         return (
             <About pokemito={pokemito} ubi={ubi} setubi={setubi}/>
@@ -16,7 +16,7 @@ export default function Estadisticas({ valor, pokemito, pokemonBuscado, ubi, set
     }
     if (valor == 3){
         return(
-            <Evoluciones pokemito={pokemito}/>
+            <Evoluciones pokemito={pokemito} evo={evo} setevo={setevo}/>
         )
     }
     if (valor == 4){
