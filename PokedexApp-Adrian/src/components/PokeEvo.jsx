@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PokeCadenaEvo from "./PokeCadenaEvo";
 
-export default function PokeEvo({pokemon, shiny, mayuscula}){
+export default function PokeEvo({pokemon, shiny, mayuscula, setPokemon}){
 
     const[cadenaEvolutiva, setCadenaEvolutiva] = useState()
     const[primeraEvolucion, setPrimeraEvolucion] = useState([])
@@ -16,7 +16,6 @@ export default function PokeEvo({pokemon, shiny, mayuscula}){
             const evolution_chain = await fetch(pokemon_species.evolution_chain.url).then(data => data.json())
 
             const datos1era = evolution_chain
-            //console.log(datos1era)
             const baseEspecie = await fetch(datos1era.chain.species.url).then(data => data.json())
             const base = await fetch("https://pokeapi.co/api/v2/pokemon/" + baseEspecie.id).then(data => data.json())
             setPrimeraEvolucion([base])
@@ -106,16 +105,11 @@ export default function PokeEvo({pokemon, shiny, mayuscula}){
         }
 
     }
-/*
-    Creo que debería añadir el trigger en todos lo pokeEvo
-    Hay algunos pokemon que evolucionan con una felicidad mínima y al subir de nivel
-    Aparte hay algunos, eeveevoluciones!!! que solamente evolucionan al subir de nivel en un sitio en específico, por la cara
-*/
 
     return(
         <>
             <div>
-                <PokeCadenaEvo shiny={shiny} primeraEvolucion={primeraEvolucion} segundaEvolucion={segundaEvolucion} terceraEvolucion={terceraEvolucion} mayuscula={mayuscula}></PokeCadenaEvo>
+                <PokeCadenaEvo shiny={shiny} primeraEvolucion={primeraEvolucion} segundaEvolucion={segundaEvolucion} terceraEvolucion={terceraEvolucion} mayuscula={mayuscula} setPokemon={setPokemon}></PokeCadenaEvo>
             </div>
        
         </>

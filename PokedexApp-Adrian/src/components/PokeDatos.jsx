@@ -43,7 +43,7 @@ export default function PokeDatos({ pokemon, mayuscula }) {
     function localizacionNull() {
         if (localizacionPokemon.length == 0) {
             return (
-                <p>This pokemon has no capture zones</p>
+                <p>Unknown</p>
             )
         } else {
             return (
@@ -54,7 +54,7 @@ export default function PokeDatos({ pokemon, mayuscula }) {
 
     return (
         <>
-            <dl className="row ms-1 pt-2">
+            <dl className="row mx-1 pt-2">
                 <dt className="col-md-4">Description</dt>
                 <dd className="col-md-8">{getDescripcion()}</dd>
 

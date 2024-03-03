@@ -5,7 +5,7 @@ export default function Loading({listaPokemon}){
 
           <div className=" col-8 mx-auto mt-5 d-flex">
             <div className="mx-auto">
-              <img src="../src/assets/pokeball.gif" className="w-100"></img>
+              <img src="/pokeball.gif" className="w-100"></img>
             </div>
           </div>
         )

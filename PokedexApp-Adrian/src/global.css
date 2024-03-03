@@ -30,3 +30,7 @@ nav{
 .pokeCardSmall:hover{
     cursor: pointer;
 }
+
+.pokeEvo:hover{
+    cursor: pointer;
+}

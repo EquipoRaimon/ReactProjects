@@ -71,15 +71,7 @@ function App() {
     return palabra.charAt(0).toUpperCase() + palabra.slice(1)
   }
 
-  //console.log(listaPokemon)
-
   // Buscar como se utiliza Toasts y Modals en Bootstrap
-
-  // Dentro de pokemon-species/{id}/ sale la evolution chain
-  // Dentro de pokemon/{id} sale la location_area_encounters
-
-  // Si guardo los datos en el estado solo se me guarda la ultima evolución. Ej. En eevee, solo se me guarda sylveon
-  // Si guardo en una variable y luego esa en el estado Ej. Se me guardan las 8 evoluciones de eevee pero tengo que volvr a hacer que carge todo para que se muestre dentro de los arrays.
 
   return (
     <>
