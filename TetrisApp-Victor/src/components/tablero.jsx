@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
+import CrearBotones from './botones';
 
 export default function CrearTablero() {
   const [Tablero, setTablero] = useState(tableroVacio());
@@ -7,8 +8,6 @@ export default function CrearTablero() {
   function tableroVacio() {
     return Array.from({ length: 20 }, () => Array(10).fill(0));
   }
-
-  console.log(Tablero)
 
   return (
     <View>
@@ -30,12 +29,14 @@ export default function CrearTablero() {
 const styles = StyleSheet.create({
   fila: {
     flexDirection: 'row',
+    marginLeft:20,
   },
   cell: {
     width: 25,
     height: 25,
     borderWidth: 1,
-    borderColor: '#001',
+    borderColor: '#000',
+    
   },
 });
 
