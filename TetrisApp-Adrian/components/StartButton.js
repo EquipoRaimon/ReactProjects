@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Colors, Typography } from "../styles";
 
-export default function StartButton({ onPress }) {
+export default function StartButton({ onPress, text}) {
 
     const styles = StyleSheet.create({
         container: {
@@ -21,7 +21,7 @@ export default function StartButton({ onPress }) {
 
   return (
     <TouchableOpacity style={styles.container} onPress={() => {onPress()}}>
-      <Text style={styles.text}>Reiniciar tablero</Text>
+      <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
 }

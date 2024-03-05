@@ -26,7 +26,7 @@ export default function Board({ board }) {
             <View key={rowIndex} style={styles.row}>
               {
                 row.map((cell, cellIndex) =>
-                  <Cell key={cellIndex} type={cell[0]} />
+                  <Cell key={cellIndex} type={cell[0]} borderWidth={1} size={25}/>
                 )}
             </View>
           )

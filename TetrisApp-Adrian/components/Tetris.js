@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Constants from "expo-constants";
 
 import { useState } from "react";
@@ -18,17 +18,17 @@ import Buttons from "./Buttons";
 
 //Estilos
 import { Colors } from "../styles";
+import MiniBoard from "./MiniBoard";
 
-//Añadir vista empezar juego y cambiar startButton por reiniciar
 //Función para ver la siguiente pieza
-// Pausar el juego
 
 export default function Tetris() {
 
   const [dropTime, setDropTime] = useState(null)
   const [gameOver, setGameOver] = useState(false)
+  const [pause, setPause] = useState(false)
 
-  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer()
+  const [player, updatePlayerPos, resetPlayer, playerRotate, nextPlayer, begin] = usePlayer()
   const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer)
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared)
 
@@ -39,8 +39,9 @@ export default function Tetris() {
   }
 
   function startGame() {
+
     // Resetea el juego
-    console.log("Hola")
+    setPause(false)
     setBoard(createBoard())
     setDropTime(1200)
     resetPlayer()
@@ -48,6 +49,7 @@ export default function Tetris() {
     setScore(0)
     setLevel(0)
     setRows(0)
+
   }
 
   function drop() {
@@ -86,7 +88,7 @@ export default function Tetris() {
 
   function move(value) {
     if (!gameOver) {
-      console.log(value)
+      
       if (value === 1) {
         movePlayer(-1)
       } else if (value === 3) {
@@ -102,12 +104,37 @@ export default function Tetris() {
     }
   }
 
+  function pauseGame() {
+    if (!gameOver) {
+
+      if (pause) {
+        setPause(false)
+        setDropTime(1200 - 200 * (level + 1))
+      } else {
+        setPause(true)
+        setDropTime(null)
+      }
+    }
+
+  }
+
   useInterval(() => drop(), dropTime)
+
+  if (pause) {
+    return (
+      <View style={{ ...styles.container, justifyContent: "center", }}>
+        <StartButton onPress={pauseGame} text={"Resume"} />
+        <StartButton onPress={startGame} text={"Restart"} />
+      </View>
+    )
+  }
+
 
   console.log('re-render')
   return (
     <View style={styles.container}>
-      <View style={styles.DisplayStyles}>
+
+      <View style={styles.displayStyles}>
         {
           gameOver ? (
             <Display text={"Game Over"} styleButton={[Colors.colors.danger, Colors.colors.dark]} styleText={Colors.colors.danger} />
@@ -119,10 +146,18 @@ export default function Tetris() {
           )
         }
       </View>
-      <StartButton onPress={startGame} />
+
+      <View style={styles.displayButton}>
+        <StartButton onPress={startGame} text={"Start"} />
+        <MiniBoard nextPlayer={nextPlayer}/>
+        <StartButton onPress={pauseGame} text={"Pause"} />
+
+      </View>
 
       <Board board={board} />
+
       <Buttons size={40} onPressIn={move} onPressOut={releaseKey} />
+
     </View>
   );
 }
@@ -135,8 +170,15 @@ const styles = StyleSheet.create({
     padding: Constants.statusBarHeight / 1.6,
     paddingTop: Constants.statusBarHeight / 1.2,
   },
-  DisplayStyles: {
+  displayStyles: {
+    width: '100%',
     flexDirection: "row",
     justifyContent: "space-evenly",
-  }
+  },
+  displayButton: {
+    width: '100%',
+    height: 50,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
 })

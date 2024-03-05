@@ -5,7 +5,7 @@ import { BOARD_WIDTH, checkCollision } from "../GameHelpers";
 
 export function usePlayer(){
     const [player, setPlayer] = useState({ pos: {x: 0, y:0}, tetromino: TETROMINOS[0].shape, collided: false })
-
+    const [nextPlayer, setNextPlayer] = useState( randomTetromino().shape )
 
     function rotate(matrix, direction){
         //Transponemos las filas por las columnas y viceversa
@@ -46,14 +46,18 @@ export function usePlayer(){
     }
 
     const resetPlayer = useCallback( () => {
+
         setPlayer({
             pos: { x: BOARD_WIDTH / 2 -1, y: 0},
-            tetromino: randomTetromino().shape,
+            tetromino: nextPlayer,
             collided: false
         })
-    }, [])
+        
+        setNextPlayer( randomTetromino().shape )
+
+    }, [nextPlayer])
 
 
-    return [player, updatePlayerPos, resetPlayer, playerRotate]
+    return [player, updatePlayerPos, resetPlayer, playerRotate, nextPlayer]
     
 }
