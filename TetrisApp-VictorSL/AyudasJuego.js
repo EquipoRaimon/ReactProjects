@@ -6,11 +6,11 @@ export function crearTablero(){
 }
 
 export function checkCollision(jugador, tablero, {x: moveX, y: moveY}){
-    for (let y = 0; y < jugador.tetromino.length; y++) {
-        for (let x = 0; x < jugador.tetromino[y].length; x++) {
+    for (let y = 0; y < jugador.piezas.length; y++) {
+        for (let x = 0; x < jugador.piezas[y].length; x++) {
             
             // Primero vemos si el jugador ocupa una celda en la que ya hay una pieza
-            if (jugador.tetromino[y][x] !== 0) {
+            if (jugador.piezas[y][x] !== 0) {
                 if(
                 //Segundo si el movimiento que vamos a hacer esta en el área correcto
                 !tablero[y + jugador.pos.y + moveY] ||

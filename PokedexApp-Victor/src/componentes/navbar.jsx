@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import imagenes from "../assets/imagenes";
 import './navbar.css'
 
-
-
 export default function Navbar({setpokemito, pokemonBuscado, setPokemonBuscado}) {
+
+    //Realizo un fetch con el nombre del pokemon que busco
      async function handleSubmit(){
         const responsePokemon = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonBuscado)
         const responsePokemonJSON = await responsePokemon.json();

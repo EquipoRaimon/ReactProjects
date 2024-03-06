@@ -26,7 +26,7 @@ export function useTablero(jugador, reiniciarJugador) {
             const newBoard = prevBoard.map(row => row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell)));
 
             // Pintamos la pieza
-            jugador.tetromino.forEach((row, y) => {
+            jugador.piezas.forEach((row, y) => {
                 row.forEach((value, x) => {
                     if (value !== 0) {
                         newBoard[y + jugador.pos.y][x + jugador.pos.x] = [value, `${jugador.collided ? 'merged' : 'clear'}`, ];
@@ -45,7 +45,7 @@ export function useTablero(jugador, reiniciarJugador) {
 
         setTablero(prev => updateBoard(prev))
 
-    }, [ jugador.collided, jugador.pos.x, jugador.pos.y, jugador.tetromino, reiniciarJugador])
+    }, [ jugador.collided, jugador.pos.x, jugador.pos.y, jugador.piezas, reiniciarJugador])
 
     return [tablero, setTablero, filasBorradas]
 

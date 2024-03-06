@@ -1,5 +1,6 @@
 export default function BaseStats({ pokemito }) {
 
+  //CONST PARA CALCULAR EL TOTAL DE PUNTOS DEL POKEMON
   const resultadoTotal = pokemito.stats.map((x, y) => (x.base_stat + (y - y))).reduce((x, y) => x + y);
 
   return (

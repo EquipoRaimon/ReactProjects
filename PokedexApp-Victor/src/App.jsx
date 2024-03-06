@@ -13,6 +13,7 @@ function App() {
   const [ubi, setubi] = useState('');
   const [evo, setevo] = useState([]);
 
+  //Para obtener información sobre los primeros 151 Pokémon de la API y almacenarlos en el estado
   useEffect(() => {
     const getPokemon = async () => {
       const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
@@ -41,7 +42,6 @@ function App() {
         <CartaSolitaria pokemito={pokemito} setpokemito={setpokemito} ubi={ubi} setubi={setubi} evo={evo} setevo={setevo}></CartaSolitaria>
       </main>
     </>
-
   )
 }
 

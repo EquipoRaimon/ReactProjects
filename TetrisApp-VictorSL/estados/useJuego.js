@@ -5,21 +5,21 @@ export function useJuego(filasBorradas){
     const [filas, setFilas] = useState(0)
     const [nivel, setNivel] = useState(0)
 
-    const linePoints = [50, 150, 150, 200]
+    const lineaDePuntos = [35, 70, 140, 280]
 
-    const calcScore = useCallback(() => {
+    const calculoPuntos = useCallback(() => {
         
         if (filasBorradas > 0) {
-            setPuntos((prev) => prev + linePoints[filasBorradas -1] * (nivel + 1 ) )
+            setPuntos((prev) => prev + lineaDePuntos[filasBorradas -1] * (nivel + 1 ) )
             setFilas((prev) => prev + filasBorradas)
         }
 
-    }, [nivel, linePoints, filasBorradas])
+    }, [nivel, lineaDePuntos, filasBorradas])
 
     useEffect(()=> {
-        calcScore()
+        calculoPuntos()
 
-    }, [calcScore, filasBorradas, puntos])
+    }, [calculoPuntos, filasBorradas, puntos])
 
     return [puntos, setPuntos, filas, setFilas, nivel, setNivel]
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+
 export default function Evoluciones({ pokemito, evo, setevo }) {
   useEffect(() => {
     const getEvolucion = async () => {

@@ -3,7 +3,7 @@ import imagenes from '../assets/imagenes'
 import './carta.css'
 import Estadisticas from './estadisticas'
 
-export default function CartaSolitaria({ pokemito, setpokemito, pokemonBuscado, setPokemonBuscado, ubi, setubi, evo, setevo}) {
+export default function CartaSolitaria({ pokemito, setpokemito, ubi, setubi, evo, setevo}) {
     const [valor, setValor] = useState(1)
 
     if (!pokemito) {
@@ -47,6 +47,7 @@ export default function CartaSolitaria({ pokemito, setpokemito, pokemonBuscado, 
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                                     <div className="navbar-nav">
+                                        {/*Doy un valor a cada apartado del navbar para que me muestre una información distinta en cada apartado*/}
                                         <button className="nav-link" value="1" onClick={(e) => cambiar(e)}>ABOUT</button>
                                         <button className="nav-link" value="2" onClick={(e) => cambiar(e)}>BASE STATS</button>
                                         <button className="nav-link" value="3" onClick={(e) => cambiar(e)}>EVOLUTIONS</button>

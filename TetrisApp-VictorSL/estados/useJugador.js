@@ -4,7 +4,7 @@ import { PIEZAS ,randomPieza } from "../Piezas";
 import { BOARD_WIDTH, checkCollision } from "../AyudasJuego";
 
 export function useJugador(){
-    const [jugador, setJugador] = useState({ pos: {x: 0, y:0}, tetromino: PIEZAS[0].shape, collided: false })
+    const [jugador, setJugador] = useState({ pos: {x: 0, y:0}, piezas: PIEZAS[0].shape, collided: false })
 
 
     function rotate(matrix, direction){
@@ -19,15 +19,15 @@ export function useJugador(){
 
     function playerRotate(tablero, direction){
         const clonedPlayer = JSON.parse(JSON.stringify(jugador))
-        clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, direction)
+        clonedPlayer.piezas = rotate(clonedPlayer.piezas, direction)
 
         const pos = clonedPlayer.pos.x
         let offset = 1
         while (checkCollision(clonedPlayer, tablero, { x: 0, y: 0 })) {
             clonedPlayer.pos.x += offset
             offset = -(offset + (offset > 0 ? 1 : -1))
-            if (offset > clonedPlayer.tetromino[0].length) {
-                rotate(clonedPlayer.tetromino, -direction)
+            if (offset > clonedPlayer.piezas[0].length) {
+                rotate(clonedPlayer.piezas, -direction)
                 clonedPlayer.pos.x = pos
                 return
             }
@@ -48,7 +48,7 @@ export function useJugador(){
     const reiniciarJugador = useCallback( () => {
         setJugador({
             pos: { x: BOARD_WIDTH / 2 -1, y: 0},
-            tetromino: randomPieza().shape,
+            piezas: randomPieza().shape,
             collided: false
         })
     }, [])
