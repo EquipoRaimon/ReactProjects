@@ -1,10 +1,14 @@
+import React, { useEffect } from 'react';
+
 export default function About({ pokemito, ubi, setubi }) {
 
-  fetch("https://pokeapi.co/api/v2/pokemon/" + `${pokemito.id}` + "/encounters")
-    .then((res) => res.json())
-    .then((result) => {
-      setubi(result);
-    });
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/pokemon/" + pokemito.id + "/encounters")
+      .then((res) => res.json())
+      .then((result) => {
+        setubi(result);
+      });
+  }, [pokemito.id, setubi]);
 
   function extraerZonas() {
     let zonasCaps = [];
@@ -15,23 +19,18 @@ export default function About({ pokemito, ubi, setubi }) {
         }
       });
     }
-
     return zonasCaps;
   }
-
-  extraerZonas();
 
   return (
     <>
       <h1>HABILIDADES:</h1>
       {
-        pokemito.abilities.map((a) => {
-          return (
-            <>
-              <p>{a.ability.name}</p>
-            </>
-          )
-        })
+        pokemito.abilities.map((a, aIndex) => (
+          <div key={aIndex}>
+            {a.ability.name}
+          </div>
+        ))
       }
       <hr></hr>
       <h1>SPECIES:</h1>
@@ -43,25 +42,25 @@ export default function About({ pokemito, ubi, setubi }) {
       <h1>PESO:</h1>
       {pokemito.weight / 10} KG
       <hr></hr>
-      <button type="button" class="btn bg-dark-subtle  bg-opacity-75 mt-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button type="button" className="btn bg-dark-subtle bg-opacity-75 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <h1>ZONA DE CAPTURAS</h1>
       </button>
-      <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content bg-light ">
+          <div className="modal-content bg-light">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">ZONA DE CAPTURAS</h5>
-              <button type="button" className="btn-close bg-danger  " data-bs-dismiss="modal" aria-label="Close "></button>
+              <button type="button" className="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <p className="ms-2 fw-bold">{extraerZonas() == 0 ? <p>ES UNA EVOLUCIÓN</p> : extraerZonas()}</p>
+              <p className="ms-2 fw-bold">{extraerZonas().length === 0 ? <>ES UNA EVOLUCIÓN</> : extraerZonas()}</p>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-
             </div>
           </div>
         </div>
       </div>
-    </>)
+    </>
+  );
 }

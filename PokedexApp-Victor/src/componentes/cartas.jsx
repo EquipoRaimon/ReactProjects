@@ -1,8 +1,6 @@
 import imagenes from '../assets/imagenes'
 import './carta.css'
 
-
-
 export default function Cartas({ pokemon, pokemito, setpokemito, coloresPokemon}) {
     if (pokemito) {
         return <></>
@@ -39,9 +37,9 @@ export default function Cartas({ pokemon, pokemito, setpokemito, coloresPokemon}
     return (
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 mx-auto">
             {
-                pokemon.map((poke) => {
+                pokemon.map((poke, pokeIndex) => {
                     return (
-                        <div className='p-3'>
+                        <div key={pokeIndex} className='p-3'>
                             <img className="w-25 mx-auto " src={imagenes.img6}/>
                             <div key={poke.id} className="card carta" onClick={() => handleOnClick(poke)} style={coloresPokemon(poke)}>
                                 <div className="card-img-top h-75 ">

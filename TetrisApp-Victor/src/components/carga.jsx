@@ -3,11 +3,10 @@ import { colors } from '../styles/colors'
 import { Text, TouchableOpacity, ImageBackground, View } from 'react-native';
 import CrearTablero from './tablero';
 import CrearBotones from './botones';
+import SiguientePieza from './siguientePieza';
 
 export default function Inicio() {
     const [vista, setVista] = useState('inicio'); // Estado para controlar la vista actual
-
-    
 
     return vista === 'inicio' ? (
         <ImageBackground
@@ -25,9 +24,11 @@ export default function Inicio() {
             </TouchableOpacity>
         </ImageBackground>
     ) : (
-        <View>
-           <CrearTablero/>
+        <View> 
+            <SiguientePieza/>
+            <CrearTablero/>
             <CrearBotones/> 
+           
         </View>
         
     )
@@ -44,21 +45,24 @@ const styles = {
         alignItems: 'center',
         marginTop: 80, // Adjust the value as per your design
     },
+
     title: {
         color: '#fff2d1', // Sample color for the text
         fontSize: 100, // Adjust the size as per your design
         fontWeight: 'bold',
     },
+
     playButton: {
         marginBottom: 350, // Adjust the value as per your design
         backgroundColor: '#fff2d1', // Sample purple color
         paddingVertical: 15,
-        borderRadius: 25,
+        borderRadius: 5,
         alignItems: "center",
         width: "50%",
         marginLeft: "25%"
 
     },
+
     playButtonText: {
         color: '#000',
         fontSize: 24, // Adjust the size as per your design

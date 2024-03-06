@@ -11,9 +11,9 @@ export default function Movimientos({ pokemito }) {
         </thead>
         <tbody>
           {
-            pokemito.moves.map((m) => {
+            pokemito.moves.map((m, mIndex) => {
               return (
-                <tr>
+                <tr key={mIndex}>
                   <td>{m.move.name}</td>
                   <td>{m.version_group_details[0].level_learned_at}</td>
                   <td>{m.version_group_details[0].move_learn_method.name}</td>

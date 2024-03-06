@@ -27,7 +27,6 @@ function App() {
       })
       setPokemon(await Promise.all(newPokemon));
     }
-
     getPokemon()
   }, [])
 
