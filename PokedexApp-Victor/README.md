@@ -1,5 +1,5 @@
-# Componentes del Proyecto Pokémon
-## Este documento proporciona una descripción general de los componentes de React desarrollados para el Proyecto Pokémon. Cada componente está diseñado para mostrar diferentes aspectos de los datos de Pokémon, utilizando la API de Pokémon.
+# POKÉDEX
+## Descripción general de los componentes de React desarrollados para la Pokédex. Cada componente está diseñado para mostrar diferentes aspectos de los datos de Pokémon, utilizando la API de Pokémon.
 
 ## Componentes
 
