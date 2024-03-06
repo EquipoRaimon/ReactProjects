@@ -32,3 +32,25 @@
 - navbar.jsx
     - Descripción: Implementa la barra de navegación para el proyecto, facilitando la navegación del usuario entre diferentes componentes y secciones de la aplicación.
 
+# COMO INSTALAR
+## Estos son los pasos que hay que seguir para poder utilizar el proyecto en un localhost.
+1. Desde la consola de comandos ponemos:
+~~~
+git clone https://github.com/EquipoRaimon/ReactProjects.git
+~~~
+Esto hará que se nos descargue el repositorio entero de ReactProjects.
+
+2. Luego accedemos a donde se haya guardado el proyecto desde la consola de comandos. Para moverse en la cmp se usa el comando cd seguido de la dirección donde esté guardado 
+Debería quedar algo así:
+
+cd C:\LaDireccionQueSea\ReactProjects\PokedexApp-Victor
+
+4. Habiendo accedido ya a la carpeta del proyecto, procedemos a instalar las dependencias necesarias para ejecutarlo mediante este comando:
+~~~
+npm install
+~~~
+4. Finalmente ejecutamos este último comando y copiamos el enlace que saldrá en un navegador.
+~~~
+npm run dev
+~~~
+
