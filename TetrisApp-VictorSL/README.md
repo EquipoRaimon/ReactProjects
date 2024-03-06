@@ -1,5 +1,5 @@
 # Tetris
-## Este documento describe los componentes de React y los hooks utilizados para construir un juego de Tetris. Los componentes están diseñados para trabajar juntos y proporcionar una experiencia completa de juego de Tetris.
+## Este documento aparecerán los componentes de React y los estados utilizados para construir un juego de Tetris.
 
 ## Componentes
 
