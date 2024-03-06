@@ -24,11 +24,13 @@ import MiniBoard from "./MiniBoard";
 
 export default function Tetris() {
 
+  // Estados propios de Tetris.js
   const [dropTime, setDropTime] = useState(null)
   const [gameOver, setGameOver] = useState(false)
   const [pause, setPause] = useState(false)
 
-  const [player, updatePlayerPos, resetPlayer, playerRotate, nextPlayer, begin] = usePlayer()
+  //Estados sacados de hooks
+  const [player, updatePlayerPos, resetPlayer, playerRotate, nextPlayer] = usePlayer()
   const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer)
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared)
 
@@ -43,7 +45,7 @@ export default function Tetris() {
     // Resetea el juego
     setPause(false)
     setBoard(createBoard())
-    setDropTime(1200)
+    setDropTime(1000)
     resetPlayer()
     setGameOver(false)
     setScore(0)
@@ -53,25 +55,31 @@ export default function Tetris() {
   }
 
   function drop() {
-    if (rows > (level + 1) * 5) {
+    //Si se eliminan 5 filas el juego se acelera, va 200ms más rápido 
+    if (rows >= (level + 1) * 5) {
       setLevel((prev) => prev + 1)
       setDropTime(1200 - 200 * (level + 1))
     }
 
+    //Si no se detecta colisión se mueve el jugador
     if (!checkCollision(player, board, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false })
+      
     } else {
+      //Si el jugador choca en la primera row, y = 0, pierde la partida
       if (player.pos.y < 1) {
         console.log("Game Over")
         setGameOver(true)
 
         setDropTime(null)
       }
+      //Si se detecta colisión pero no en la primera fila, entonces la pieza ha colisionado 
       updatePlayerPos({ x: 0, y: 0, collided: true })
 
     }
   }
 
+  //Si el jugador presiona el botón hacia abajo, el tienmpo de caida se anula para un movimineto más suave
   function dropPlayer() {
     setDropTime(null);
     drop();
@@ -81,11 +89,13 @@ export default function Tetris() {
   function releaseKey(value) {
     if (!gameOver) {
       if (value === 2) {
-        setDropTime(1200 - 200 * (level + 1))
+        const minTime = 300
+        setDropTime( Math.max(1200 - 200 * (level + 1), minTime) )
       }
     }
   }
 
+  //Ejecuta funciones de movimiento o rotación dependiendo de el botón pulsado
   function move(value) {
     if (!gameOver) {
       
@@ -104,12 +114,14 @@ export default function Tetris() {
     }
   }
 
+  
   function pauseGame() {
     if (!gameOver) {
 
       if (pause) {
         setPause(false)
-        setDropTime(1200 - 200 * (level + 1))
+        const minTime = 300
+        setDropTime( Math.max(1200 - 200 * (level + 1), minTime) )
       } else {
         setPause(true)
         setDropTime(null)
@@ -129,8 +141,6 @@ export default function Tetris() {
     )
   }
 
-
-  console.log('re-render')
   return (
     <View style={styles.container}>
 
@@ -140,8 +150,8 @@ export default function Tetris() {
             <Display text={"Game Over"} styleButton={[Colors.colors.danger, Colors.colors.dark]} styleText={Colors.colors.danger} />
           ) : (
             <>
-              <Display text={`Score: ${score}`} styleButton={['#320B86', '#320B86']} styleText={Colors.colors.light} />
-              <Display text={`Level: ${level + 1}`} styleButton={['#320B86', '#320B86']} styleText={Colors.colors.light} />
+              <Display text={`Score: ${score}`} styleButton={[Colors.colors.displayButton, Colors.colors.displayButton]} styleText={Colors.colors.light} />
+              <Display text={`Level: ${level + 1}`} styleButton={[Colors.colors.displayButton, Colors.colors.displayButton]} styleText={Colors.colors.light} />
             </>
           )
         }

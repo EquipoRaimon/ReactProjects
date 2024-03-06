@@ -16,7 +16,7 @@ export function checkCollision(player, board, {x: moveX, y: moveY}){
                 !board[y + player.pos.y + moveY] ||
                 //Miramos si nuestro movimiento se encuentra dentro del area x permitida
                 !board[y + player.pos.y + moveY][x + player.pos.x + moveX] ||
-                //Miramos
+                //Miramos si ha chocado con alguna pieza con valor 'merged'
                     board[y+ player.pos.y + moveY][x + player.pos.x + moveX][1] !== 'clear'
                 ){
                     return true;

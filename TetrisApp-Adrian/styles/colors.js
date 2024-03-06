@@ -13,6 +13,7 @@ export const colors = {
     highlight: "#ff9f0a",
     shadow: '#373737',
     gray: '#5A5A5A',
+    displayButton: '#320B86',
     z_primary: "#FF0000", // rojo
     z_darkOutline: "#990000",
     l_primary: "#FFA500", // naranja
