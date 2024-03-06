@@ -1,8 +1,8 @@
 # Componentes del Proyecto Pokémon
 ## Este documento proporciona una descripción general de los componentes de React desarrollados para el Proyecto Pokémon. Cada componente está diseñado para mostrar diferentes aspectos de los datos de Pokémon, utilizando la API de Pokémon.
 
-##Componentes
-##Acerca de
+## Componentes
+## Acerca de
 - Archivo: about.jsx
     - Descripción: Muestra información sobre un Pokémon específico, incluidas las ubicaciones de encuentro. Obtiene datos según el ID del Pokémon y actualiza el estado del componente con los resultados.
 
