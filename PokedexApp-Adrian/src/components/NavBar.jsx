@@ -1,35 +1,35 @@
 import { useState } from 'react'
 
 
-export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado, generacion}){
+export default function PokeCardSmall({ setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado, generacion }) {
 
     const [buscarPokemon, setBuscarPokemon] = useState();
 
-    const tipos  = ["all", "grass", "water", "fire", "electric", "normal", "poison", "bug", "fairy", "flying", "ground", "rock", "dark", "ghost", "dragon", "psychic", "ice", "fighting", "steel"]
+    const tipos = ["all", "grass", "water", "fire", "electric", "normal", "poison", "bug", "fairy", "flying", "ground", "rock", "dark", "ghost", "dragon", "psychic", "ice", "fighting", "steel"]
 
-    function cambiarGeneracion(e){
+    function cambiarGeneracion(e) {
         if (generacion != e.target.value) {
             setGeneracion(e.target.value)
             setListaPokemon([])
         }
         setPokemon()
-        
+
     }
 
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault()
-        
+
         if (buscarPokemon == "") {
             setTipoFiltrado("all")
             setPokemon()
             return
         }
         const Auxpoke = buscarPokemon.toLowerCase()
-        if(tipos.includes(Auxpoke)){
+        if (tipos.includes(Auxpoke)) {
             setTipoFiltrado(Auxpoke)
             setPokemon()
-        }else{
-            const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/"+Auxpoke)
+        } else {
+            const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/" + Auxpoke)
             if (respuesta.ok) {
 
                 const respuestaJson = await respuesta.json()
@@ -37,12 +37,11 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
             } else {
                 console.error('No existe ese pokemon');
-                //var myModal = document.getElementById('miModal')
             }
         }
     }
 
-    function cambiarShiny(){
+    function cambiarShiny() {
         if (!shiny) {
             setShiny(1)
 
@@ -51,13 +50,13 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
         }
     }
-    
-    return(
+
+    return (
         <>
             <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
                 <div className="container-fluid ">
                     <div className="navbar-brand">
-                        <img src='../src/assets/pikachu.png' className="logo"/>
+                        <a href="index.html "><img src='/pikachu.png' className="logo" /></a>
                     </div>
                     <span className="navbar-brand mb-0 h1">Pokedex</span>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,32 +95,12 @@ export default function PokeCardSmall({setGeneracion, setPokemon, setShiny, shin
 
 
                         <form className="d-flex" role="search" onSubmit={handleSubmit} id="formPokemon">
-                            <input className="form-control me-2" type="search" id="inputPokemon" placeholder="Enter name, type or id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value) }/>
+                            <input className="form-control me-2" type="search" id="inputPokemon" placeholder="Enter name, type or id" aria-label="Search" onChange={(e) => setBuscarPokemon(e.target.value)} />
                             <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
             </nav>
-            
-            {/*
-                <div className="modal fade" id="miModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            ...
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Understood</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            */}
 
         </>
     )

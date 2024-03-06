@@ -19,10 +19,18 @@ nav{
     width: 25vw;
 }
 
+.flecha{
+    width: 7vw;
+}
+
 .boton-volver:hover{
     cursor: pointer;
 }
 
 .pokeCardSmall:hover{
+    cursor: pointer;
+}
+
+.pokeEvo:hover{
     cursor: pointer;
 }

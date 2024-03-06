@@ -3,7 +3,7 @@ import PokeCardSmall from './PokeCardSmall'
 export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, tipoFiltrado, setColor, mayuscula}){
 
   if(pokemon){
-    return <></>
+    return null
   }
 
   function conseguirTipos(pokemon){
@@ -16,7 +16,7 @@ export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, 
 
   if (tipoFiltrado == "all") {
     return(
-      <div className=' mt-1 row g-3 '>
+      <div className=' mt-1 mb-3 row g-3 '>
         {
           listaPokemon.map((poke) => {
             return(
@@ -32,7 +32,7 @@ export default function PokeCardList({listaPokemon, pokemon, setPokemon, shiny, 
 
 
   return(
-    <div className=' mt-1 row g-3 '>
+    <div className=' mt-1 mb-3 row g-3 '>
       {
         listaPokemon.map((poke) => {
           const tipos = conseguirTipos(poke)

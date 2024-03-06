@@ -7,7 +7,7 @@ import PokeEvo from './PokeEvo'
 export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, mayuscula }){
 
     if(!pokemon){
-        return <></>
+        return null
     }
     
     function handleClick(){
@@ -24,12 +24,9 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
         return tipos.toString().replace(",",", ")
     }
 
-    //console.log(mostrarTipos().toString().replace(",",", "))
-    //console.log(mostrarTipos().toString().replace(",","\n"))
-
     return(
         <>
-            <div className="card col-12 col-md-8 mx-auto mt-3 pb-3" style={setColor(color)}>
+            <div className="card col-12 col-md-8 mx-auto my-3 pb-3 animate__animated animate__fadeIn" style={setColor(color)}>
 
                 <button type="button" className="btn-close ms-3 mt-3 btn btn-lg " aria-label="Close" onClick={handleClick}></button>
 
@@ -57,16 +54,16 @@ export default function PokeCardSmall({ pokemon, setPokemon, shiny, setColor, ma
                     </ul>
                     <div className="tab-content bg-light-subtle rounded-bottom-2  pb-1" id="nav-tabContent">
                         <div className="tab-pane fade" id="poke-about" role="tabpanel" aria-labelledby="about-tab" tabIndex="0">
-                            <PokeDatos pokemon={pokemon} />
+                            <PokeDatos key={pokemon.name} pokemon={pokemon} mayuscula={mayuscula}/>
                         </div>
                         <div className="tab-pane fade" id="poke-stats" role="tabpanel" aria-labelledby="stats-tab" tabIndex="0">
                             <PokeStats pokemon={pokemon} mayuscula={mayuscula} />
                         </div>
                         <div className="tab-pane fade" id="poke-evo" role="tabpanel" aria-labelledby="evo-tab" tabIndex="0">
-                            <PokeEvo pokemon={pokemon} />
+                            <PokeEvo key={pokemon.name} pokemon={pokemon} shiny={shiny} mayuscula={mayuscula} setPokemon={setPokemon}/>
                         </div>
                         <div className="tab-pane fade" id="poke-moves" role="tabpanel" aria-labelledby="moves-tab" tabIndex="0">
-                            <PokeMoves pokemon={pokemon} />
+                            <PokeMoves pokemon={pokemon} mayuscula={mayuscula}/>
                         </div>
                     </div>
                 </div>
