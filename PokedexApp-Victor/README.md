@@ -3,6 +3,11 @@
 
 ## Componentes
 
+- app.jsx
+    - Obtiene información sobre los primeros 151 Pokémon de la PokeAPI.
+    - Muestra una barra de navegación (Navbar) para buscar Pokémon.
+    - Muestra cartas de Pokémon (Cartas) y una carta solitaria (CartaSolitaria).
+
 - about.jsx
     - Muestra información sobre un Pokémon específico, incluidas las ubicaciones de encuentro. Obtiene datos según el ID del Pokémon y actualiza el estado del componente con los resultados.
 
@@ -27,4 +32,3 @@
 - navbar.jsx
     - Descripción: Implementa la barra de navegación para el proyecto, facilitando la navegación del usuario entre diferentes componentes y secciones de la aplicación.
 
-### Estos componentes están desarrollados utilizando React y forman parte de un proyecto más amplio dirigido a entusiastas e investigadores de Pokémon. Cada componente está diseñado para ser modular, permitiendo su reutilización y escalabilidad dentro del proyecto.
