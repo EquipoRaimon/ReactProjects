@@ -31,3 +31,34 @@
     - Estado para manejar la pieza de Tetris actual del jugador, incluyendo su posición y rotación.
 - useTablero.js
     - Estado para gestionar el estado del tablero de Tetris, incluyendo la colocación de piezas y la eliminación de líneas.
+
+
+# COMO INSTALAR 
+
+1. Desde la consola de comandos ponemos:
+~~~
+git clone https://github.com/EquipoRaimon/ReactProjects.git
+~~~
+
+2. Accedemos a la carpeta de los proyectos:
+    - cd C:\LaDireccionQueSea\ReactProjects\
+  
+3. Habiendo accedido a la carpeta de los proyectos, ponemos este comando:
+~~~
+npm install -g expo-cli
+~~~
+
+4. Accedemos a la carpeta del proyecto:
+    - cd C:\LaDireccionQueSea\ReactProjects\TetrisApp-VictorSL
+  
+5. Habiendo accedido a la carpeta del proyectos, ponemos este comando:
+~~~
+npm expo install
+~~~
+
+6. Una vez instalado, podemos lanzado con este comando:
+~~~
+npm expo start
+~~~
+
+## PARA LEER EL QR QUE TE APARECERA POR PANTALLA ES NECESARIA LA APP: EXPO APP
