@@ -6,7 +6,7 @@ export default function PokeImage({ pokemon, shiny }) {
             <img src='/Snorlax.png' className="pokeimg" />
         )
     }
-
+    //Retorna la foto shiny o no dependiendo del estado shiny
     return (
         <img src={shiny ? pokemon.sprites.other['official-artwork'].front_shiny : pokemon.sprites.other['official-artwork'].front_default} className="pokeimg"></img>
     )

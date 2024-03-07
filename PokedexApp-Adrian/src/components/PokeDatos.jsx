@@ -20,16 +20,18 @@ export default function PokeDatos({ pokemon, mayuscula }) {
         getLocalizacionPokemon()
 
 
-    }, [pokemon])
+    }, [])
 
     if (especiePokemon == undefined || localizacionPokemon == undefined) {
         return null
     }
-
+    
+    //Consigue la primera descripción que esté en el idioma señalado
     function getDescripcion() {
+        const idioma = "en"
         const enDescripciones = []
         especiePokemon.flavor_text_entries.map((poke) => {
-            if (poke.language.name === "en") {
+            if (poke.language.name === idioma) {
                 enDescripciones.push(poke.flavor_text)
             }
         })
@@ -44,10 +46,6 @@ export default function PokeDatos({ pokemon, mayuscula }) {
         if (localizacionPokemon.length == 0) {
             return (
                 <p>Unknown</p>
-            )
-        } else {
-            return (
-                <></>
             )
         }
     }

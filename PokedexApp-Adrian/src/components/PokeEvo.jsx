@@ -3,12 +3,12 @@ import PokeCadenaEvo from "./PokeCadenaEvo";
 
 export default function PokeEvo({pokemon, shiny, mayuscula, setPokemon}){
 
-    const[cadenaEvolutiva, setCadenaEvolutiva] = useState()
+    const[cadenaEvolutivaConseguida, setCadenaEvolutivaConseguida] = useState(false)
     const[primeraEvolucion, setPrimeraEvolucion] = useState([])
     const[segundaEvolucion, setSegundaEvolucion] = useState([])
     const[terceraEvolucion, setTerceraEvolucion] = useState([])
 
-
+    //Para que solo haga la función getCadenaEvolutiva una vez y no haga infinitas llamadas a la api
     useEffect( () => {
 
         const getCadenaEvolutiva = async () => {
@@ -36,24 +36,21 @@ export default function PokeEvo({pokemon, shiny, mayuscula, setPokemon}){
                             const evoDetails = getEvoDetails(dato3era.evolution_details)
                             setTerceraEvolucion(prev => [...prev,[evo, evoDetails]])
                         })
-
-
                     }
                 })
-
             }
-            setCadenaEvolutiva(evolution_chain)
+            setCadenaEvolutivaConseguida(true)
         }
-        if (primeraEvolucion.length == 0) {
-           getCadenaEvolutiva()
-        }
-
+        getCadenaEvolutiva()
     }, [])
 
-    if (cadenaEvolutiva == undefined) {
+    if (cadenaEvolutivaConseguida == false) {
         return null
     }
 
+    //Esta función sirve para sacar datos específicos de como evolucionan los pokemon
+    //No se encuentran incluidos todas las formas pero sí están incluidas las más comunes
+    //En el caso de las formas que no aparecen o que no aparezca solo se muestra el trigger de cómo evoluciona el pokemon
     function getEvoDetails(evolution_details) {
 
         const evoDetails = evolution_details.filter( evo => {
@@ -106,6 +103,7 @@ export default function PokeEvo({pokemon, shiny, mayuscula, setPokemon}){
 
     }
 
+    //Para más claridad, la lógica se queda en este componente y la parte visual en el componente PokeCadenaEvo
     return(
         <>
             <div>

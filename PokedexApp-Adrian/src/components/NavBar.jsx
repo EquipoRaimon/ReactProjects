@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
 
-export default function PokeCardSmall({ setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado, generacion }) {
+export default function NavBar({ setGeneracion, setPokemon, setShiny, shiny, setListaPokemon, setTipoFiltrado, generacion }) {
 
-    const [buscarPokemon, setBuscarPokemon] = useState();
+    const [buscarPokemon, setBuscarPokemon] = useState("");
 
     const tipos = ["all", "grass", "water", "fire", "electric", "normal", "poison", "bug", "fairy", "flying", "ground", "rock", "dark", "ghost", "dragon", "psychic", "ice", "fighting", "steel"]
 
+    //Si la generación es diferente a la que ya está elegida (por defecto Kanto), se cambia
     function cambiarGeneracion(e) {
         if (generacion != e.target.value) {
             setGeneracion(e.target.value)
@@ -16,15 +17,19 @@ export default function PokeCardSmall({ setGeneracion, setPokemon, setShiny, shi
 
     }
 
+    //Primero mira si se escribe vacío u all, luego si se desea filtrar por algún tipo y por último si es un id o nombre de pokemon
     async function handleSubmit(e) {
         e.preventDefault()
 
-        if (buscarPokemon == "") {
+        //Dejarlo vacío o poner all hace que se muestren todos los pokemon
+        if (buscarPokemon === "") {
             setTipoFiltrado("all")
             setPokemon()
             return
         }
+
         const Auxpoke = buscarPokemon.toLowerCase()
+
         if (tipos.includes(Auxpoke)) {
             setTipoFiltrado(Auxpoke)
             setPokemon()
@@ -51,6 +56,7 @@ export default function PokeCardSmall({ setGeneracion, setPokemon, setShiny, shi
         }
     }
 
+    //El value de los botones es el número de la pokedex en pokeapi
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
