@@ -1,5 +1,5 @@
 # Tetris
-## Este documento aparecerán los componentes de React y los estados utilizados para construir un juego de Tetris.
+## En este documento aparecerán los componentes de React y los estados utilizados para construir un juego de Tetris.
 
 ## Componentes
 
