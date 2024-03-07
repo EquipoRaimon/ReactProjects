@@ -18,6 +18,7 @@ export function usePlayer(){
     }
 
     function playerRotate(board, direction){
+        //Copia exacta del jugador
         const clonedPlayer = JSON.parse(JSON.stringify(player))
         clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, direction)
 

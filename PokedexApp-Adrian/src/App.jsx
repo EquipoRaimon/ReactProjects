@@ -34,7 +34,7 @@ function App() {
     shadow : {backgroundColor: '#212F3D'}, 
     unknown : {backgroundColor: '#black'}
   }
-  
+
   useEffect(() => {
     const getListaPokemon = async () => {
 
@@ -42,7 +42,14 @@ function App() {
       const listaPokemonURL = await url.json()
       const { pokemon_entries } = listaPokemonURL
 
-
+      /*
+      pokemon_entries guarda el nombre del pokemon pero no sirve para hacer el fetch a https://pokeapi.co/api/v2/pokemon/ 
+      directamente debido a que hay nombres de pokemon que se guardan con un sufijo Ej. deoxys es el nombre del pokemon
+      y que se usa tanto en https://pokeapi.co/api/v2/pokemon-species/ como en el pokemon_entries, 
+      deoxys-normal es el nombre que debería usar en https://pokeapi.co/api/v2/pokemon/
+      Por lo tanto es mejor buscarlos por su id en la pokedex nacional ya que esa no cambia nunca
+      */
+     
       const listaPokemonResultados = pokemon_entries.map(async (pokemon) => {
         const auxPokemon = await fetch("https://pokeapi.co/api/v2/pokemon-species/" + pokemon.pokemon_species.name)
         const dataAuxPokemon = await auxPokemon.json()
@@ -70,8 +77,6 @@ function App() {
   function mayuscula(palabra){
     return palabra.charAt(0).toUpperCase() + palabra.slice(1)
   }
-
-  // Buscar como se utiliza Toasts y Modals en Bootstrap
 
   return (
     <>
