@@ -54,3 +54,5 @@ npm install
 npm run dev
 ~~~
 
+## PARA USAR DICHOS COMANDOS RECUERDA TENER INSTALADO NODE.JS
+
